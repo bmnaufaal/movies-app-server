@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Deliver Us From Evil",
+        "synopsis": "Crime|Drama",
+        "trailerUrl": "http://dummyimage.com/178x100.png/dddddd/000000",
+        "imgUrl": "http://dummyimage.com/103x100.png/5fa2dd/ffffff",
+        "rating": 4,
+        "genreId": 3,
+        "authorId": 4
+    }, {
+        "title": "Attila",
+        "synopsis": "Action|Horror|Thriller",
+        "trailerUrl": "http://dummyimage.com/234x100.png/ff4444/ffffff",
+        "imgUrl": "http://dummyimage.com/207x100.png/5fa2dd/ffffff",
+        "rating": 3,
+        "genreId": 2,
+        "authorId": 2
+    }, {
+        "title": "Quo Vadis, Baby?",
+        "synopsis": "Drama|Thriller",
+        "trailerUrl": "http://dummyimage.com/170x100.png/5fa2dd/ffffff",
+        "imgUrl": "http://dummyimage.com/205x100.png/cc0000/ffffff",
+        "rating": 1,
+        "genreId": 2,
+        "authorId": 5
+    }, {
+        "title": "What! No Beer?",
+        "synopsis": "Comedy",
+        "trailerUrl": "http://dummyimage.com/206x100.png/dddddd/000000",
+        "imgUrl": "http://dummyimage.com/103x100.png/dddddd/000000",
+        "rating": 3,
+        "genreId": 5,
+        "authorId": 4
+    }, {
+        "title": "Silent One, The",
+        "synopsis": "Adventure|Children|Drama",
+        "trailerUrl": "http://dummyimage.com/159x100.png/dddddd/000000",
+        "imgUrl": "http://dummyimage.com/170x100.png/5fa2dd/ffffff",
+        "rating": 2,
+        "genreId": 5,
+        "authorId": 1
+    }
+]
+  

@@ -1,0 +1,38 @@
+[
+    {
+        "username": "bmnaufaal",
+        "email": "bmnaufaal@gmail.com",
+        "password": "123456",
+        "role": "Electrical Engineer",
+        "phoneNumber": "586-108-6312",
+        "address": "PO Box 74583"
+    }, {
+        "username": "bkondratyuk1",
+        "email": "ucockerell1@wordpress.com",
+        "password": "q9UFdhScu4Jv",
+        "role": "Administrative Assistant I",
+        "phoneNumber": "683-747-2954",
+        "address": "Suite 42"
+    }, {
+        "username": "jbernetti2",
+        "email": "asugg2@omniture.com",
+        "password": "NyIurUQfww",
+        "role": "Registered Nurse",
+        "phoneNumber": "172-749-5177",
+        "address": "PO Box 58112"
+    }, {
+        "username": "bmacnalley3",
+        "email": "laldrin3@imgur.com",
+        "password": "OEloQtpKV7",
+        "role": "Nuclear Power Engineer",
+        "phoneNumber": "353-864-7599",
+        "address": "PO Box 92368"
+    }, {
+        "username": "mslavin4",
+        "email": "bscading4@omniture.com",
+        "password": "lVYwIiLVBL7",
+        "role": "Help Desk Operator",
+        "phoneNumber": "644-767-4991",
+        "address": "Room 1201"
+    }
+]
