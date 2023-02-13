@@ -31,7 +31,7 @@ module.exports = {
         type: Sequelize.DataTypes.INTEGER,
         references: {
           model: {
-            tableName: 'Genres',
+            tableName: 'Genres'
           },
           key: 'id'
         },
