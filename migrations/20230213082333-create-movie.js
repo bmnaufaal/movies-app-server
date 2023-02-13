@@ -28,10 +28,24 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       genreId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'Genres',
+          },
+          key: 'id'
+        },
+        allowNull: false
       },
       authorId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: 'Authors'
+          },
+          key: 'id'
+        },
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
