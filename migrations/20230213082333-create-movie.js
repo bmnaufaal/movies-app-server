@@ -35,6 +35,8 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
         allowNull: false
       },
       authorId: {
@@ -45,6 +47,8 @@ module.exports = {
           },
           key: 'id'
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
         allowNull: false
       },
       createdAt: {
