@@ -3,8 +3,8 @@ const app = express();
 const port = 3000;
 
 app.use(express.static('public'));
-app.use(express.urlencoded({extended:false}));
-app.use(express.json());
+app.use(express.urlencoded({ extended:true }));
+app.use(express.json());    // <==== parse request body as JSON
 
 app.use(require('./routers/index'));
 app.use(require('./routers/movie'));
