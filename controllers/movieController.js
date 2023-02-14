@@ -29,9 +29,9 @@ class MovieController {
   }
 
   static async create(req, res, next) {
-    const { title, synopsis, trailerUrl, imgUrl, rating, genreId } =
-      req.body;
     try {
+      const { title, synopsis, trailerUrl, imgUrl, rating, genreId } = req.body;
+      const authorId = req.user.id;
       let createdMovie = await Movie.create({
         title,
         synopsis,
@@ -39,6 +39,7 @@ class MovieController {
         imgUrl,
         rating,
         genreId,
+        authorId,
       });
       res.status(201).json(createdMovie);
     } catch (error) {

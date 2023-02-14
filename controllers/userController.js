@@ -6,7 +6,8 @@ const { User } = require("../models");
 class UserController {
   static async register(req, res, next) {
     try {
-      let { username, email, password, role, phoneNumber, address } = req.body;
+      let { username, email, password, phoneNumber, address } = req.body;
+      const role = "admin";
       const createdUser = await User.create({
         username,
         email,

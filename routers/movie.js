@@ -2,11 +2,12 @@ const MovieController = require("../controllers/movieController");
 const authentication = require("../middlewares/authentication");
 const authorization = require("../middlewares/authorization");
 
-const router = require("express").Router();
+const movieRouter = require("express").Router();
 
-router.get("/movies", authentication, MovieController.findAll);
-router.get("/movies/:id", authentication, MovieController.findOne);
-router.post("/movies/add", authentication, MovieController.create);
-router.delete("/movies/:id", authentication, authorization, MovieController.delete);
+movieRouter.use(authentication);
+movieRouter.get("/", MovieController.findAll);
+movieRouter.get("/:id", MovieController.findOne);
+movieRouter.post("/add", MovieController.create);
+movieRouter.delete("/:id", authorization, MovieController.delete);
 
-module.exports = router;
+module.exports = movieRouter;
