@@ -20,6 +20,10 @@ function errorHandler(error, req, res, next) {
       });
       message = error;
       break;
+    case "Forbidden":
+      status = 403;
+      message = "Forbidden";
+      break;
     case "InvalidCredentials":
       status = 401;
       message = "Invalid Username / Password";

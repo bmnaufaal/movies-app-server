@@ -13,6 +13,21 @@ class MovieController {
     }
   }
 
+  static async findOne(req, res, next) {
+    const { id } = req.params;
+    try {
+      let foundMovie = await Movie.findByPk(id, {
+        include: [Genre, { model: User, as: "Author" }],
+      });
+      if (!foundMovie) {
+        throw { name: "NotFound" };
+      }
+      res.status(200).json(foundMovie);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async create(req, res, next) {
     const { title, synopsis, trailerUrl, imgUrl, rating, genreId, authorId } =
       req.body;
@@ -27,19 +42,6 @@ class MovieController {
         authorId,
       });
       res.status(201).json(createdMovie);
-    } catch (error) {
-      next(error);
-    }
-  }
-
-  static async findOne(req, res, next) {
-    const { id } = req.params;
-    try {
-      let foundMovie = await Movie.findByPk(id);
-      if (!foundMovie) {
-        throw { name: "NotFound" };
-      }
-      res.status(200).json(foundMovie);
     } catch (error) {
       next(error);
     }
@@ -61,17 +63,6 @@ class MovieController {
       res.status(200).json({
         message: `${foundMovie.title} success to delete`,
       });
-    } catch (error) {
-      next(error);
-    }
-  }
-
-  static async findAllDetail(req, res, next) {
-    try {
-      const movies = await Movie.findAll({
-        include: [Genre, { model: User, as: "Author" }],
-      });
-      res.status(200).json(movies);
     } catch (error) {
       next(error);
     }
