@@ -20,11 +20,43 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Movie.init({
-    title: DataTypes.STRING,
-    synopsis: DataTypes.TEXT,
+    title: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notNull: {
+          msg: "Title should not be null"
+        },
+        notEmpty: {
+          msg: "Title should not be empty"
+        }
+      }
+    },
+    synopsis: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notNull: {
+          msg: "Synopsis should not be null"
+        },
+        notEmpty: {
+          msg: "Synopsis should not be empty"
+        }
+      }
+    },
     trailerUrl: DataTypes.STRING,
     imgUrl: DataTypes.STRING,
-    rating: DataTypes.INTEGER,
+    rating: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      validate: {
+        isGreaterThanOne(value) {
+          if (+value < 1) {
+            throw new Error("Minimum rating is 1");
+          }
+        }
+      }
+    },
     genreId: DataTypes.INTEGER,
     authorId: DataTypes.INTEGER
   }, {

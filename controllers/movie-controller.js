@@ -22,9 +22,16 @@ class MovieController {
             res.status(201).json(createdMovie);
         } catch (error) {
             console.log(error);
-            res.status(500).json({
-                message: "Internal Server Error"
-            });
+            if (error.name === 'SequelizeValidationError') {
+                error = error.errors.map(element => {
+                    return element.message;
+                });
+                res.status(400).json(error);
+            } else {
+                res.status(500).json({
+                    message: "Internal Server Error"
+                });
+            }
         }
     }
 
@@ -66,7 +73,7 @@ class MovieController {
         }
     }
 
-    static async findFullData(req, res) {
+    static async findAllDetail(req, res) {
         try {
             const movies = await Movie.findAll({
                 include: [ Genre, Author ]
