@@ -30,17 +30,20 @@ class MovieController {
       res.status(201).json(createdMovie);
     } catch (error) {
       console.log(error);
-      if (error.name === "SequelizeValidationError") {
-        error = error.errors.map((element) => {
-          return element.message;
-        });
-        res.status(400).json({
-          message: error,
-        });
-      } else {
-        res.status(500).json({
-          message: "Internal Server Error",
-        });
+      switch (error.name) {
+        case "SequelizeValidationError":
+          error = error.errors.map((element) => {
+            return element.message;
+          });
+          res.status(400).json({
+            message: error,
+          });
+          break;
+        default:
+          res.status(500).json({
+            message: "Internal Server Error",
+          });
+          break;
       }
     }
   }
