@@ -5,7 +5,14 @@ class MovieController {
   static async findAll(req, res, next) {
     try {
       const movies = await Movie.findAll({
-        include: [Genre, { model: User, as: "Author" }],
+        include: [
+          Genre,
+          {
+            model: User,
+            as: "Author",
+            attributes: ["id", "username", "email", "role"],
+          },
+        ],
       });
       res.status(200).json(movies);
     } catch (error) {
@@ -17,7 +24,14 @@ class MovieController {
     const { id } = req.params;
     try {
       let foundMovie = await Movie.findByPk(id, {
-        include: [Genre, { model: User, as: "Author" }],
+        include: [
+          Genre,
+          {
+            model: User,
+            as: "Author",
+            attributes: ["id", "username", "email", "role"],
+          },
+        ],
       });
       if (!foundMovie) {
         throw { name: "NotFound" };
