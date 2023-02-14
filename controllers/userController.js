@@ -4,7 +4,7 @@ const { createToken } = require("../helpers/jwt");
 const { User } = require("../models");
 
 class UserController {
-  static async register(req, res) {
+  static async register(req, res, next) {
     try {
       let { email, password } = req.body;
       const createdUser = await User.create({ email, password });
@@ -13,27 +13,11 @@ class UserController {
         email: createdUser.email,
       });
     } catch (error) {
-      console.log(error);
-      switch (error.name) {
-        case "SequelizeUniqueConstraintError":
-        case "SequelizeValidationError":
-          error = error.errors.map((element) => {
-            return element.message;
-          });
-          res.status(400).json({
-            message: error,
-          });
-          break;
-        default:
-          res.status(500).json({
-            message: "Internal Server Error",
-          });
-          break;
-      }
+      next(error);
     }
   }
 
-  static async login(req, res) {
+  static async login(req, res, next) {
     try {
       const { email, password } = req.body;
       const userFound = await User.findOne({
@@ -53,24 +37,12 @@ class UserController {
       const payload = {
         id: userFound.id,
       };
-      const accessToken = createToken(payload);
+      const access_token = createToken(payload);
       res.status(200).json({
-        accessToken: accessToken,
+        access_token: access_token,
       });
     } catch (error) {
-      switch (error.name) {
-        case "InvalidCredentials":
-          res.status(300).json({
-            message: "Invalid Usernamme / Password",
-          });
-          break;
-        default:
-          console.log(error);
-          res.status(500).json({
-            message: "Internal Server Error",
-          });
-          break;
-      }
+      next(error);
     }
   }
 }

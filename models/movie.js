@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       Movie.belongsTo(models.Genre, {
         foreignKey: "genreId",
       });
-      Movie.belongsTo(models.Author, {
+      Movie.belongsTo(models.User, {
         foreignKey: "authorId",
       });
     }

@@ -1,20 +1,17 @@
 "use strict";
-const { Movie, Genre, Author } = require("../models");
+const { Movie, Genre } = require("../models");
 
 class MovieController {
-  static async findAll(req, res) {
+  static async findAll(req, res, next) {
     try {
       const movies = await Movie.findAll();
       res.status(200).json(movies);
     } catch (error) {
-      console.log(error);
-      res.status(500).json({
-        message: "Internal Server Error",
-      });
+      next(error);
     }
   }
 
-  static async create(req, res) {
+  static async create(req, res, next) {
     const { title, synopsis, trailerUrl, imgUrl, rating, genreId, authorId } =
       req.body;
     try {
@@ -29,47 +26,29 @@ class MovieController {
       });
       res.status(201).json(createdMovie);
     } catch (error) {
-      console.log(error);
-      switch (error.name) {
-        case "SequelizeValidationError":
-          error = error.errors.map((element) => {
-            return element.message;
-          });
-          res.status(400).json({
-            message: error,
-          });
-          break;
-        default:
-          res.status(500).json({
-            message: "Internal Server Error",
-          });
-          break;
-      }
+      next(error);
     }
   }
 
-  static async findOne(req, res) {
+  static async findOne(req, res, next) {
     const { id } = req.params;
     try {
       let foundMovie = await Movie.findByPk(id);
       if (!foundMovie) {
-        throw "Movie Not Found";
+        throw { name: "NotFound" };
       }
       res.status(200).json(foundMovie);
     } catch (error) {
-      console.log(error);
-      res.status(404).json({
-        message: error,
-      });
+      next(error);
     }
   }
 
-  static async delete(req, res) {
+  static async delete(req, res, next) {
     const { id } = req.params;
     try {
       let foundMovie = await Movie.findByPk(id);
       if (!foundMovie) {
-        throw "Movie Not Found";
+        throw { name: "NotFound" };
       }
       let deletedMovie = await Movie.destroy({
         where: {
@@ -81,24 +60,18 @@ class MovieController {
         message: `${foundMovie.title} success to delete`,
       });
     } catch (error) {
-      console.log(error);
-      res.status(404).json({
-        message: error,
-      });
+      next(error);
     }
   }
 
-  static async findAllDetail(req, res) {
+  static async findAllDetail(req, res, next) {
     try {
       const movies = await Movie.findAll({
-        include: [Genre, Author],
+        include: [ Genre ],
       });
       res.status(200).json(movies);
     } catch (error) {
-      console.log(error);
-      res.status(500).json({
-        message: "Internal Server Error",
-      });
+      next(error);
     }
   }
 }
