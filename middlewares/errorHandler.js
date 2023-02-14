@@ -20,6 +20,14 @@ function errorHandler(error, req, res, next) {
       });
       message = error;
       break;
+    case "InvalidEmail":
+      status = 400;
+      message = "Email should not be empty";
+      break;
+    case "InvalidPassword":
+      status = 400;
+      message = "Password should not be empty";
+      break;
     case "Forbidden":
       status = 403;
       message = "Forbidden";
