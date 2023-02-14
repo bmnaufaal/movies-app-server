@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,22 +11,22 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
-    const genres = require('../data/genres.json').map(element => {
+     */
+    const genres = require("../data/genres.json").map((element) => {
       element.createdAt = new Date();
       element.updatedAt = new Date();
-      return element; 
-     });
-     await queryInterface.bulkInsert('Genres', genres, {});
+      return element;
+    });
+    await queryInterface.bulkInsert("Genres", genres, {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Genres', null, {});
-  }
+    await queryInterface.bulkDelete("Genres", null, {});
+  },
 };

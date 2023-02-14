@@ -13,6 +13,7 @@ List of available endpoints:
 ## 1. GET /movies
 
 Description:
+
 - Get all movie from database
 
 Request:
@@ -54,6 +55,7 @@ _Response (200 - OK)_
 ## 2. GET /moviesDetail
 
 Description:
+
 - Get all movie detail from database
 
 Request:
@@ -123,6 +125,7 @@ _Response (200 - OK)_
 ## 3. POST /movies/add
 
 Description:
+
 - Create movie
 
 Request:
@@ -131,13 +134,13 @@ Request:
 
 ```json
 {
-    "title": "string",
-    "synopsis": "string",
-    "trailerUrl": "string",
-    "imgUrl": "string",
-    "rating": "integer",
-    "genreId": "integer",
-    "authorId": "integer"
+  "title": "string",
+  "synopsis": "string",
+  "trailerUrl": "string",
+  "imgUrl": "string",
+  "rating": "integer",
+  "genreId": "integer",
+  "authorId": "integer"
 }
 ```
 
@@ -145,16 +148,16 @@ _Response (201 - Created)_
 
 ```json
 {
-    "id": 12,
-    "title": "Fight Club",
-    "synopsis": "lorem ipsum",
-    "trailerUrl": "https://www.google.com",
-    "imgUrl": "https://www.google.com",
-    "rating": 10,
-    "genreId": 1,
-    "authorId": 1,
-    "updatedAt": "2023-02-14T01:07:23.232Z",
-    "createdAt": "2023-02-14T01:07:23.232Z"
+  "id": 12,
+  "title": "Fight Club",
+  "synopsis": "lorem ipsum",
+  "trailerUrl": "https://www.google.com",
+  "imgUrl": "https://www.google.com",
+  "rating": 10,
+  "genreId": 1,
+  "authorId": 1,
+  "updatedAt": "2023-02-14T01:07:23.232Z",
+  "createdAt": "2023-02-14T01:07:23.232Z"
 }
 ```
 
@@ -162,11 +165,11 @@ _Response (400 - Bad Request)_
 
 ```json
 {
-    "message": [
-        "Title should not be null",
-        "Synopsis should not be null",
-        "Movie.rating cannot be null"
-    ]
+  "message": [
+    "Title should not be null",
+    "Synopsis should not be null",
+    "Movie.rating cannot be null"
+  ]
 }
 ```
 
@@ -175,6 +178,7 @@ _Response (400 - Bad Request)_
 ## 4. GET /movies/:id
 
 Description:
+
 - Get movie by id
 
 Request:
@@ -191,16 +195,16 @@ _Response (200 - OK)_
 
 ```json
 {
-    "id": 11,
-    "title": "Fight Club",
-    "synopsis": "lorem ipsum",
-    "trailerUrl": "https://www.google.com",
-    "imgUrl": "https://www.google.com",
-    "rating": 10,
-    "genreId": 1,
-    "authorId": 1,
-    "createdAt": "2023-02-14T00:44:34.686Z",
-    "updatedAt": "2023-02-14T00:44:34.686Z"
+  "id": 11,
+  "title": "Fight Club",
+  "synopsis": "lorem ipsum",
+  "trailerUrl": "https://www.google.com",
+  "imgUrl": "https://www.google.com",
+  "rating": 10,
+  "genreId": 1,
+  "authorId": 1,
+  "createdAt": "2023-02-14T00:44:34.686Z",
+  "updatedAt": "2023-02-14T00:44:34.686Z"
 }
 ```
 
@@ -217,6 +221,7 @@ _Response (404 - Not Found)_
 ## 5. DELETE /movies/:id
 
 Description:
+
 - Delete movie by id
 
 Request:
@@ -233,7 +238,7 @@ _Response (200 - OK)_
 
 ```json
 {
-    "message": "Fight Club success to delete"
+  "message": "Fight Club success to delete"
 }
 ```
 

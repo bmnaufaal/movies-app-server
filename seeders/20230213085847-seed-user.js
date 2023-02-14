@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,22 +11,22 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
-   const users = require('../data/users.json').map(element => {
-    element.createdAt = new Date();
-    element.updatedAt = new Date();
-    return element; 
-   });
-   await queryInterface.bulkInsert('Users', users, {});
+     */
+    const users = require("../data/users.json").map((element) => {
+      element.createdAt = new Date();
+      element.updatedAt = new Date();
+      return element;
+    });
+    await queryInterface.bulkInsert("Users", users, {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Users', null, {});
-  }
+    await queryInterface.bulkDelete("Users", null, {});
+  },
 };

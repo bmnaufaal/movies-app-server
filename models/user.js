@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -13,42 +11,45 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  User.init({
-    username: DataTypes.STRING,
-    email: {
-      allowNull: false,
-      unique: true,
-      type: DataTypes.STRING,
-      validate: {
-        notNull: {
-          msg: "Email should not be null"
+  User.init(
+    {
+      username: DataTypes.STRING,
+      email: {
+        allowNull: false,
+        unique: true,
+        type: DataTypes.STRING,
+        validate: {
+          notNull: {
+            msg: "Email should not be null",
+          },
+          notEmpty: {
+            msg: "Email should not be empty",
+          },
+          isEmail: {
+            msg: "Email should be email format",
+          },
         },
-        notEmpty: {
-          msg: "Email should not be empty"
+      },
+      password: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notNull: {
+            msg: "Password should not be null",
+          },
+          notEmpty: {
+            msg: "Password should not be empty",
+          },
         },
-        isEmail: {
-          msg: "Email should be email format"
-        }
-      }
+      },
+      role: DataTypes.STRING,
+      phoneNumber: DataTypes.STRING,
+      address: DataTypes.STRING,
     },
-    password: {
-      allowNull: false,
-      type: DataTypes.STRING,
-      validate: {
-        notNull: {
-          msg: "Password should not be null"
-        },
-        notEmpty: {
-          msg: "Password should not be empty"
-        }
-      }
-    },
-    role: DataTypes.STRING,
-    phoneNumber: DataTypes.STRING,
-    address: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'User',
-  });
+    {
+      sequelize,
+      modelName: "User",
+    }
+  );
   return User;
 };

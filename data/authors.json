@@ -1,23 +1,27 @@
 [
-    {
-        "name": "Sammy Harriman",
-        "dateOfBirth": "2013-06-25",
-        "email": "sharriman0@economist.com"
-    }, {
-        "name": "Carolin Charte",
-        "dateOfBirth": "2000-05-22",
-        "email": "ccharte1@mozilla.com"
-    }, {
-        "name": "Alanson Gilstoun",
-        "dateOfBirth": "2015-12-03",
-        "email": "agilstoun2@businesswire.com"
-    }, {
-        "name": "Elisabetta Mostyn",
-        "dateOfBirth": "2009-08-06",
-        "email": "emostyn3@theguardian.com"
-    }, {
-        "name": "Farah Mayhow",
-        "dateOfBirth": "2022-02-13",
-        "email": "fmayhow4@w3.org"
-    }
+  {
+    "name": "Sammy Harriman",
+    "dateOfBirth": "2013-06-25",
+    "email": "sharriman0@economist.com"
+  },
+  {
+    "name": "Carolin Charte",
+    "dateOfBirth": "2000-05-22",
+    "email": "ccharte1@mozilla.com"
+  },
+  {
+    "name": "Alanson Gilstoun",
+    "dateOfBirth": "2015-12-03",
+    "email": "agilstoun2@businesswire.com"
+  },
+  {
+    "name": "Elisabetta Mostyn",
+    "dateOfBirth": "2009-08-06",
+    "email": "emostyn3@theguardian.com"
+  },
+  {
+    "name": "Farah Mayhow",
+    "dateOfBirth": "2022-02-13",
+    "email": "fmayhow4@w3.org"
+  }
 ]

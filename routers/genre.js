@@ -1,6 +1,6 @@
-const Controller = require('../controllers/movie-controller');
+const Controller = require("../controllers/movieController");
 
-const router = require('express').Router();
+const router = require("express").Router();
 
 // router.get('/genres', Controller.findAllGenres);
 
