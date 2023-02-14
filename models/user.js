@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.Movie, {
         foreignKey: "authorId",
-        as: "Author"
+        as: "Author",
       });
     }
   }
@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.beforeCreate((user, options) => {
     user.password = hashPassword(user.password);
-    user.role = "staff";
+    // user.role = "staff";
   });
 
   return User;

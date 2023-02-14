@@ -6,8 +6,15 @@ const { User } = require("../models");
 class UserController {
   static async register(req, res, next) {
     try {
-      let { email, password } = req.body;
-      const createdUser = await User.create({ email, password });
+      let { username, email, password, role, phoneNumber, address } = req.body;
+      const createdUser = await User.create({
+        username,
+        email,
+        password,
+        role,
+        phoneNumber,
+        address,
+      });
       res.status(201).json({
         id: createdUser.id,
         email: createdUser.email,
