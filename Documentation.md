@@ -5,7 +5,7 @@
 List of available endpoints:
 
 - `GET /movies`
-- `GET /moviesDetail`
+- `GET /genres`
 - `POST /modes/add`
 - `GET /movies/:id`
 - `DELETE /movies/:id`
@@ -23,74 +23,6 @@ _Response (200 - OK)_
 ```json
 [
     {
-        "id": 1,
-        "title": "Deliver Us From Evil",
-        "synopsis": "Crime|Drama",
-        "trailerUrl": "http://dummyimage.com/178x100.png/dddddd/000000",
-        "imgUrl": "http://dummyimage.com/103x100.png/5fa2dd/ffffff",
-        "rating": 4,
-        "genreId": 3,
-        "authorId": 4,
-        "createdAt": "2023-02-13T12:57:43.267Z",
-        "updatedAt": "2023-02-13T12:57:43.267Z"
-    },
-    {
-        "id": 2,
-        "title": "Attila",
-        "synopsis": "Action|Horror|Thriller",
-        "trailerUrl": "http://dummyimage.com/234x100.png/ff4444/ffffff",
-        "imgUrl": "http://dummyimage.com/207x100.png/5fa2dd/ffffff",
-        "rating": 3,
-        "genreId": 2,
-        "authorId": 2,
-        "createdAt": "2023-02-13T12:57:43.267Z",
-        "updatedAt": "2023-02-13T12:57:43.267Z"
-    }
-    ...,
-]
-```
-
-&nbsp;
-
-## 2. GET /moviesDetail
-
-Description:
-
-- Get all movie detail from database
-
-Request:
-
-_Response (200 - OK)_
-
-```json
-[
-    {
-        "id": 11,
-        "title": "Fight Club",
-        "synopsis": "lorem ipsum",
-        "trailerUrl": "https://www.google.com",
-        "imgUrl": "https://www.google.com",
-        "rating": 10,
-        "genreId": 1,
-        "authorId": 1,
-        "createdAt": "2023-02-14T00:44:34.686Z",
-        "updatedAt": "2023-02-14T00:44:34.686Z",
-        "Genre": {
-            "id": 1,
-            "name": "Comedy",
-            "createdAt": "2023-02-13T12:57:43.261Z",
-            "updatedAt": "2023-02-13T12:57:43.261Z"
-        },
-        "Author": {
-            "id": 1,
-            "name": "Sammy Harriman",
-            "dateOfBirth": "2013-06-25T00:00:00.000Z",
-            "email": "sharriman0@economist.com",
-            "createdAt": "2023-02-13T12:57:43.265Z",
-            "updatedAt": "2023-02-13T12:57:43.265Z"
-        }
-    },
-    {
         "id": 3,
         "title": "Quo Vadis, Baby?",
         "synopsis": "Drama|Thriller",
@@ -99,22 +31,49 @@ _Response (200 - OK)_
         "rating": 1,
         "genreId": 2,
         "authorId": 5,
-        "createdAt": "2023-02-13T12:57:43.267Z",
-        "updatedAt": "2023-02-13T12:57:43.267Z",
+        "createdAt": "2023-02-14T09:03:11.085Z",
+        "updatedAt": "2023-02-14T09:03:11.085Z",
         "Genre": {
             "id": 2,
             "name": "Drama",
-            "createdAt": "2023-02-13T12:57:43.261Z",
-            "updatedAt": "2023-02-13T12:57:43.261Z"
+            "createdAt": "2023-02-14T09:03:11.083Z",
+            "updatedAt": "2023-02-14T09:03:11.083Z"
         },
         "Author": {
             "id": 5,
-            "name": "Farah Mayhow",
-            "dateOfBirth": "2022-02-13T00:00:00.000Z",
-            "email": "fmayhow4@w3.org",
-            "createdAt": "2023-02-13T12:57:43.265Z",
-            "updatedAt": "2023-02-13T12:57:43.265Z"
+            "username": "mslavin4",
+            "email": "bscading4@omniture.com",
+            "password": "$2a$08$VH2EANsC8kVYvIYberUFV.6t9Mpz5pv.dXYPbV9W5dGoj1iTU/beC",
+            "role": "admin",
+            "phoneNumber": "644-767-4991",
+            "address": "Room 1201",
+            "createdAt": "2023-02-14T09:03:11.077Z",
+            "updatedAt": "2023-02-14T09:03:11.077Z"
         }
+    }
+    ...,
+]
+```
+
+&nbsp;
+
+## 2. GET /genres
+
+Description:
+
+- Get all genres from database
+
+Request:
+
+_Response (200 - OK)_
+
+```json
+[
+    {
+        "id": 1,
+        "name": "Comedy",
+        "createdAt": "2023-02-14T09:03:11.083Z",
+        "updatedAt": "2023-02-14T09:03:11.083Z"
     }
     ...,
 ]

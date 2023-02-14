@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.Movie, {
         foreignKey: "authorId",
+        as: "Author"
       });
     }
   }

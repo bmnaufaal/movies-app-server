@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       Movie.belongsTo(models.User, {
         foreignKey: "authorId",
+        as: "Author"
       });
     }
   }

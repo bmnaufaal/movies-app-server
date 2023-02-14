@@ -1,10 +1,12 @@
 "use strict";
-const { Movie, Genre } = require("../models");
+const { Movie, Genre, User } = require("../models");
 
 class MovieController {
   static async findAll(req, res, next) {
     try {
-      const movies = await Movie.findAll();
+      const movies = await Movie.findAll({
+        include: [Genre, { model: User, as: "Author" }],
+      });
       res.status(200).json(movies);
     } catch (error) {
       next(error);
@@ -67,7 +69,7 @@ class MovieController {
   static async findAllDetail(req, res, next) {
     try {
       const movies = await Movie.findAll({
-        include: [ Genre ],
+        include: [Genre, { model: User, as: "Author" }],
       });
       res.status(200).json(movies);
     } catch (error) {
