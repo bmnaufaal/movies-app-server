@@ -18,7 +18,18 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init(
     {
-      username: DataTypes.STRING,
+      username: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notNull: {
+            msg: "Username should not be null",
+          },
+          notEmpty: {
+            msg: "Username should not be empty",
+          },
+        },
+      },
       email: {
         allowNull: false,
         unique: true,
@@ -47,7 +58,18 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      role: DataTypes.STRING,
+      role: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notNull: {
+            msg: "Role should not be null",
+          },
+          notEmpty: {
+            msg: "Role should not be empty",
+          },
+        },
+      },
       phoneNumber: DataTypes.STRING,
       address: DataTypes.STRING,
     },
