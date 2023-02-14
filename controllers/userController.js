@@ -7,7 +7,6 @@ class UserController {
   static async register(req, res) {
     try {
       let { email, password } = req.body;
-      password = hashPassword(password);
       const createdUser = await User.create({ email, password });
       res.status(201).json({
         id: createdUser.id,
@@ -17,13 +16,6 @@ class UserController {
       console.log(error);
       switch (error.name) {
         case "SequelizeUniqueConstraintError":
-          error = error.errors.map((element) => {
-            return element.message;
-          });
-          res.status(400).json({
-            message: error,
-          });
-          break;
         case "SequelizeValidationError":
           error = error.errors.map((element) => {
             return element.message;
@@ -73,7 +65,7 @@ class UserController {
           });
           break;
         default:
-          console.log(error)
+          console.log(error);
           res.status(500).json({
             message: "Internal Server Error",
           });
