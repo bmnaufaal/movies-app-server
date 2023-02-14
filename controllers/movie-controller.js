@@ -26,7 +26,9 @@ class MovieController {
                 error = error.errors.map(element => {
                     return element.message;
                 });
-                res.status(400).json(error);
+                res.status(400).json({
+                    message: error
+                });
             } else {
                 res.status(500).json({
                     message: "Internal Server Error"
@@ -39,11 +41,14 @@ class MovieController {
         const { id } = req.params;
         try {
             let foundMovie = await Movie.findByPk(id);
+            if (!foundMovie) {
+                throw "Movie Not Found"
+            }
             res.status(200).json(foundMovie);
         } catch (error) {
             console.log(error);
             res.status(404).json({
-                message: "Data Not Found"
+                message: error
             });
         }
     }
@@ -53,7 +58,7 @@ class MovieController {
         try {
             let foundMovie = await Movie.findByPk(id);
             if (!foundMovie) {
-                throw "Data Not Found"
+                throw "Movie Not Found"
             }
             let deletedMovie = await Movie.destroy({
                 where: {
@@ -62,13 +67,12 @@ class MovieController {
             });
             console.log(deletedMovie);
             res.status(200).json({
-                message: `${foundMovie.title} success to delete`,
-                deletedMovie: deletedMovie
+                message: `${foundMovie.title} success to delete`
             });
         } catch (error) {
             console.log(error);
             res.status(404).json({
-                message: "Data Not Found"
+                message: error
             });
         }
     }
