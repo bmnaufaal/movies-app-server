@@ -11,7 +11,7 @@ class UserController {
         username,
         email,
         password,
-        role: "admin",
+        role: "Admin",
         phoneNumber,
         address,
       });
