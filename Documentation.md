@@ -5,10 +5,12 @@
 List of available endpoints:
 
 - `GET /movies`
-- `GET /genres`
 - `POST /modes/add`
 - `GET /movies/:id`
 - `DELETE /movies/:id`
+- `GET /genres`
+- `POST /register`
+- `POST /login`
 
 ## 1. GET /movies
 
@@ -17,6 +19,14 @@ Description:
 - Get all movie from database
 
 Request:
+
+- headers: 
+
+```json
+{
+  "access_token": "string"
+}
+```
 
 _Response (200 - OK)_
 
@@ -35,59 +45,37 @@ _Response (200 - OK)_
         "updatedAt": "2023-02-14T09:03:11.085Z",
         "Genre": {
             "id": 2,
-            "name": "Drama",
-            "createdAt": "2023-02-14T09:03:11.083Z",
-            "updatedAt": "2023-02-14T09:03:11.083Z"
+            "name": "Drama"
         },
         "Author": {
             "id": 5,
             "username": "mslavin4",
             "email": "bscading4@omniture.com",
-            "password": "$2a$08$VH2EANsC8kVYvIYberUFV.6t9Mpz5pv.dXYPbV9W5dGoj1iTU/beC",
-            "role": "admin",
-            "phoneNumber": "644-767-4991",
-            "address": "Room 1201",
-            "createdAt": "2023-02-14T09:03:11.077Z",
-            "updatedAt": "2023-02-14T09:03:11.077Z"
+            "role": "admin"
         }
-    }
+    },
     ...,
 ]
 ```
 
 &nbsp;
 
-## 2. GET /genres
 
-Description:
-
-- Get all genres from database
-
-Request:
-
-_Response (200 - OK)_
-
-```json
-[
-    {
-        "id": 1,
-        "name": "Comedy",
-        "createdAt": "2023-02-14T09:03:11.083Z",
-        "updatedAt": "2023-02-14T09:03:11.083Z"
-    }
-    ...,
-]
-```
-
-&nbsp;
-
-## 3. POST /movies/add
+## 2. POST /movies/add
 
 Description:
 
 - Create movie
 
 Request:
+
+- headers: 
+
+```json
+{
+  "access_token": "string"
+}
+```
 
 - body:
 
@@ -107,16 +95,16 @@ _Response (201 - Created)_
 
 ```json
 {
-  "id": 12,
-  "title": "Fight Club",
-  "synopsis": "lorem ipsum",
-  "trailerUrl": "https://www.google.com",
-  "imgUrl": "https://www.google.com",
-  "rating": 10,
-  "genreId": 1,
-  "authorId": 1,
-  "updatedAt": "2023-02-14T01:07:23.232Z",
-  "createdAt": "2023-02-14T01:07:23.232Z"
+    "id": 8,
+    "title": "Fight Club",
+    "synopsis": "A depressed man (Edward Norton) suffering from insomnia meets a strange soap salesman named Tyler Durden (Brad Pitt) and soon finds himself living in his squalid house after his perfect apartment is destroyed. The two bored men form an underground club with strict rules and fight other men who are fed up with their mundane lives. Their perfect partnership frays when Marla (Helena Bonham Carter), a fellow support group crasher, attracts Tyler's attention.",
+    "trailerUrl": "https://www.youtube.com/watch?v=qtRKdVHc-cE&ab_channel=RottenTomatoesClassicTrailers",
+    "imgUrl": "https://resizing.flixster.com/0kbkzWG-fGf5yEZSmLw4VB_SpnQ=/206x305/v2/https://flxt.tmsimg.com/assets/p23069_p_v8_aa.jpg",
+    "rating": 10,
+    "genreId": 1,
+    "authorId": 7,
+    "updatedAt": "2023-02-15T04:33:59.370Z",
+    "createdAt": "2023-02-15T04:33:59.370Z"
 }
 ```
 
@@ -124,23 +112,31 @@ _Response (400 - Bad Request)_
 
 ```json
 {
-  "message": [
-    "Title should not be null",
-    "Synopsis should not be null",
-    "Movie.rating cannot be null"
-  ]
+    "message": [
+        "Title should not be null",
+        "Synopsis should not be null",
+        "Minimum rating is 1"
+    ]
 }
 ```
 
 &nbsp;
 
-## 4. GET /movies/:id
+## 3. GET /movies/:id
 
 Description:
 
 - Get movie by id
 
 Request:
+
+- headers: 
+
+```json
+{
+  "access_token": "string"
+}
+```
 
 - params:
 
@@ -177,13 +173,21 @@ _Response (404 - Not Found)_
 
 &nbsp;
 
-## 5. DELETE /movies/:id
+## 4. DELETE /movies/:id
 
 Description:
 
 - Delete movie by id
 
 Request:
+
+- headers: 
+
+```json
+{
+  "access_token": "string"
+}
+```
 
 - params:
 
@@ -211,12 +215,133 @@ _Response (404 - Not Found)_
 
 &nbsp;
 
+## 5. GET /genres
+
+Description:
+
+- Get all genres from database
+
+Request:
+
+- headers: 
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+[
+    {
+        "id": 1,
+        "name": "Comedy",
+        "createdAt": "2023-02-14T09:03:11.083Z",
+        "updatedAt": "2023-02-14T09:03:11.083Z"
+    }
+    ...,
+]
+```
+
+&nbsp;
+
+## 6. POST /register
+
+Request:
+
+- body:
+
+```json
+{
+  "username": "string",
+  "email": "string",
+  "password": "string"
+  "phoneNumber": "string"
+  "address": "string"
+}
+```
+
+_Response (201 - Created)_
+
+```json
+{
+  "id": "integer",
+  "email": "string"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "message": [
+        "Username should not be empty",
+        "Email should not be empty",
+        "Email should be email format",
+        "Password should not be empty"
+    ]
+}
+OR
+{
+    "message": [
+        "This email is already taken"
+    ]
+}
+```
+
+&nbsp;
+
+## 7. POST /login
+
+Request:
+
+- body:
+
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+  "message": "Email is required"
+}
+OR
+{
+  "message": "Password is required"
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid email/password"
+}
+```
+
+&nbsp;
+
 ## Global Error
 
 _Response (500 - Internal Server Error)_
 
 ```json
 {
-  "message": "Internal server error"
+  "message": "Internal Server Error"
 }
 ```

@@ -6,7 +6,10 @@ class MovieController {
     try {
       const movies = await Movie.findAll({
         include: [
-          Genre,
+          {
+            model: Genre,
+            attributes: ["id", "name"],
+          },
           {
             model: User,
             as: "Author",

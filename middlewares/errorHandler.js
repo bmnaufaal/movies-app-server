@@ -22,11 +22,11 @@ function errorHandler(error, req, res, next) {
       break;
     case "InvalidEmail":
       status = 400;
-      message = "Email should not be empty";
+      message = "Email is required";
       break;
     case "InvalidPassword":
       status = 400;
-      message = "Password should not be empty";
+      message = "Password is required";
       break;
     case "Forbidden":
       status = 403;
@@ -34,7 +34,7 @@ function errorHandler(error, req, res, next) {
       break;
     case "InvalidCredentials":
       status = 401;
-      message = "Invalid Username / Password";
+      message = "Invalid email/password";
       break;
     case "NotFound":
       status = 404;
