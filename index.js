@@ -1,17 +1,19 @@
 $(document).ready(() => {
+  $("#login-form").submit(handleLogin);
+  $("#nav-logout").click(handleLogout);
+
   let access_token = localStorage.getItem("access_token");
   if (access_token) {
     isLoggedIn();
-    fetchMovies();
   }
-  $("#login-form").submit(handleLogin);
-  $("#nav-logout").click(handleLogout);
 });
 
 const baseUrl = "http://localhost:3000";
 
 function isLoggedIn() {
   $("#login-section").hide();
+  fetchMovies();
+  fetchGenres();
 }
 
 function handleLogin(e) {
@@ -29,6 +31,7 @@ function handleLogin(e) {
     .done((response) => {
       console.log("Berhasil login");
       localStorage.setItem("access_token", response.access_token);
+      isLoggedIn();
     })
     .fail((error) => {
       console.log("Gagal login");
@@ -73,7 +76,34 @@ function fetchMovies() {
       });
     })
     .fail((error) => {
-      console.log("Gagal login");
+      console.log("Gagal get movies data");
+      console.log(error.responseJSON);
+    });
+}
+
+function fetchGenres() {
+  $.ajax({
+    url: baseUrl + "/genres",
+    method: "GET",
+    headers: {
+      access_token: localStorage.getItem("access_token"),
+    },
+  })
+    .done((genresData) => {
+      console.log("Berhasil get genres data");
+      console.log(genresData);
+      $("#total-category").text(genresData.length);
+      genresData.forEach((genres) => {
+        $("#table-category").append(`
+          <tr>
+              <td>${genres.id}</td>
+              <td>${genres.name}</td>
+          </tr>
+          `);
+      });
+    })
+    .fail((error) => {
+      console.log("Gagal get genres data");
       console.log(error.responseJSON);
     });
 }
