@@ -336,6 +336,53 @@ _Response (401 - Unauthorized)_
 
 &nbsp;
 
+## 8. POST /genres/add
+
+Description:
+
+- Create genre
+
+Request:
+
+- headers: 
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+- body:
+
+```json
+{
+  "name": "string"
+}
+```
+
+_Response (201 - Created)_
+
+```json
+{
+    "id": 6,
+    "name": "Genre 1",
+    "updatedAt": "2023-02-16T01:23:45.994Z",
+    "createdAt": "2023-02-16T01:23:45.994Z"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "message": [
+        "Genre name should not be null"
+    ]
+}
+```
+
+&nbsp;
+
 ## Global Error
 
 _Response (500 - Internal Server Error)_

@@ -178,7 +178,7 @@ function fetchMovies() {
             <td>${movies.Genre.name}</td>
             <td>${movies.Author.username}</td>
             <td>
-              <a href="/" class="ms-3"><span class="icon material-symbols-outlined text-danger">delete</span></a>
+              <a id="" href="javascript:;" class="ms-3"><span class="icon material-symbols-outlined text-danger">delete</span></a>
             </td>
         </tr>
         `);
@@ -212,7 +212,7 @@ function fetchGenres() {
               <td>${genres.id}</td>
               <td>${genres.name}</td>
               <td>
-                <a href="" class="ms-3"><span class="icon material-symbols-outlined text-danger">delete</span></a>
+                <a href="javascript:;" class="ms-3"><span class="icon material-symbols-outlined text-danger">delete</span></a>
               </td>
           </tr>
         `);
