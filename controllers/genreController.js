@@ -4,7 +4,9 @@ const { Movie, Genre, User } = require("../models");
 class GenreController {
   static async findAll(req, res, next) {
     try {
-      const genres = await Genre.findAll();
+      const genres = await Genre.findAll({
+        order: [["id", "ASC"]],
+      });
       res.status(200).json(genres);
     } catch (error) {
       next(error);

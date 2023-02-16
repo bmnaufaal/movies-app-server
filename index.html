@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="IDEA Admin Panel" />
+    <meta name="description" content="IDEA Movies App" />
     <meta name="author" content="Ziady Mubaraq" />
     <link
       href="./image/IDEA_logo.svg"
@@ -21,6 +21,11 @@
       rel="stylesheet"
     />
     <link href="./css/style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
     <title>IDEA - Admin Panel</title>
   </head>
 
@@ -51,7 +56,7 @@
           width="80"
           class="d-inline-block me-2"
           alt="IDEA"
-        />Admin Panel</a
+        />Movies App</a
       >
       <button
         class="navbar-toggler position-absolute d-md-none collapsed"
@@ -229,24 +234,28 @@
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active fw-bold" href="" id="nav-dashboard">
+                <a
+                  class="nav-link active fw-bold"
+                  href="javascript:;"
+                  id="nav-dashboard"
+                >
                   <span class="icon material-symbols-outlined me-2"
                     >shopping_cart</span
                   >Dashboard</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="" id="nav-product">
+                <a class="nav-link" href="javascript:;" id="nav-movie">
                   <span class="icon material-symbols-outlined me-2"
                     >shopping_bag</span
-                  >Products</a
+                  >Movies</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="" id="nav-category">
+                <a class="nav-link" href="javascript:;" id="nav-genre">
                   <span class="icon material-symbols-outlined me-2"
                     >category</span
-                  >Categories</a
+                  >Genres</a
                 >
               </li>
             </ul>
@@ -286,7 +295,7 @@
           <div class="row">
             <div class="col-12 col-md-6">
               <div class="row">
-                <div class="col-12 col-md-6 mb-3">
+                <div id="movie-card" class="col-12 col-md-6 mb-3">
                   <div class="card">
                     <div class="card-body">
                       <h6 class="card-subtitle mb-2 text-muted">
@@ -298,7 +307,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-6 mb-3">
+                <div id="genre-card" class="col-12 col-md-6 mb-3">
                   <div class="card">
                     <div class="card-body">
                       <h6 class="card-subtitle mb-2 text-muted">
@@ -342,6 +351,7 @@
                     <th scope="col">Rating</th>
                     <th scope="col">Genre</th>
                     <th scope="col">Author</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody id="table-product"></tbody>
@@ -359,98 +369,86 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
-            <h1 class="display-2">New Product</h1>
+            <h1 class="display-2">New Movie</h1>
           </div>
           <div class="row">
             <div class="col-12 col-md-6">
               <form id="product-form">
                 <div class="mb-3">
-                  <label for="product-name"
-                    >Name <span class="text-danger fw-bold">*</span></label
+                  <label for="movie-title"
+                    >Title <span class="text-danger fw-bold">*</span></label
                   >
                   <input
                     type="text"
                     class="form-control"
-                    id="product-name"
-                    placeholder="Enter product name"
+                    id="movie-title"
+                    placeholder="Enter movie title"
                     autocomplete="off"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="product-category"
-                    >Category <span class="text-danger fw-bold">*</span></label
+                  <label for="movie-synopsis"
+                    >Synopsis <span class="text-danger fw-bold">*</span></label
                   >
-                  <select id="product-category" class="form-select" required>
-                    <option value="" selected disabled>
-                      -- Select Category --
-                    </option>
-                    <option value="1">Furniture</option>
-                    <option value="2">Workspace</option>
-                    <option value="3">Storage</option>
-                    <option value="4">Textile</option>
-                  </select>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="movie-synopsis"
+                    placeholder="Enter synopsis "
+                    autocomplete="off"
+                    required
+                  />
                 </div>
                 <div class="mb-3">
-                  <label for="product-desc"
-                    >Description
+                  <label for="movie-trailerUrl"
+                    >Trailer URL
                     <span class="text-danger fw-bold">*</span></label
                   >
                   <input
                     type="text"
                     class="form-control"
-                    id="product-desc"
-                    placeholder="Enter product description"
+                    id="movie-trailerUrl"
+                    placeholder="Enter Trailer URL "
                     autocomplete="off"
                     required
                   />
                 </div>
-                <div class="row">
-                  <div class="col-12 col-md-6">
-                    <div class="mb-3">
-                      <label for="product-stock"
-                        >Stock <span class="text-danger fw-bold">*</span></label
-                      >
-                      <input
-                        type="number"
-                        min="0"
-                        class="form-control"
-                        id="product-stock"
-                        placeholder="Enter product stock"
-                        autocomplete="off"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="mb-3">
-                      <label for="product-price"
-                        >Price <span class="text-danger fw-bold">*</span></label
-                      >
-                      <input
-                        type="number"
-                        min="0"
-                        class="form-control"
-                        id="product-price"
-                        placeholder="Enter product price"
-                        autocomplete="off"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
                 <div class="mb-3">
-                  <label for="product-image"
-                    >Image <span class="text-danger fw-bold">*</span></label
+                  <label for="movie-imgUrl"
+                    >Image URL <span class="text-danger fw-bold">*</span></label
                   >
                   <input
                     type="text"
                     class="form-control"
-                    id="product-image"
-                    placeholder="Enter product image url"
+                    id="movie-imgUrl"
+                    placeholder="Enter Image URL "
                     autocomplete="off"
                     required
                   />
+                </div>
+                <div class="mb-3">
+                  <label for="movie-rating"
+                    >Rating <span class="text-danger fw-bold">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="movie-rating"
+                    placeholder="Enter Rating "
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="movie-genreId"
+                    >Genre <span class="text-danger fw-bold">*</span></label
+                  >
+                  <select id="movie-genreId" class="form-select" required>
+                    <option value="" selected disabled>
+                      -- Select Genre --
+                    </option>
+                  </select>
                 </div>
                 <div class="row mt-5 mb-3">
                   <div class="col-6">
@@ -486,8 +484,7 @@
           >
             <h1 class="display-2">Genres</h1>
             <button class="btn btn-primary rounded-pill" id="new-category">
-              <span class="icon material-symbols-outlined">add</span>New
-              Category
+              <span class="icon material-symbols-outlined">add</span>New Genre
             </button>
           </div>
           <div class="row">
@@ -497,6 +494,7 @@
                   <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody id="table-category"></tbody>
@@ -572,4 +570,8 @@
     ></script>
     <script src="/index.js"></script>
   </body>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/toastify-js"
+  ></script>
 </html>

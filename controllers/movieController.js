@@ -5,6 +5,7 @@ class MovieController {
   static async findAll(req, res, next) {
     try {
       const movies = await Movie.findAll({
+        order: [["id", "ASC"]],
         include: [
           {
             model: Genre,
