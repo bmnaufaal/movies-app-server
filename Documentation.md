@@ -9,6 +9,7 @@ List of available endpoints:
 - `GET /movies/:id`
 - `DELETE /movies/:id`
 - `GET /genres`
+- `POST /genres/add`
 - `POST /register`
 - `POST /login`
 
@@ -247,96 +248,7 @@ _Response (200 - OK)_
 
 &nbsp;
 
-## 6. POST /register
-
-Request:
-
-- body:
-
-```json
-{
-  "username": "string",
-  "email": "string",
-  "password": "string"
-  "phoneNumber": "string"
-  "address": "string"
-}
-```
-
-_Response (201 - Created)_
-
-```json
-{
-  "id": "integer",
-  "email": "string"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```json
-{
-    "message": [
-        "Username should not be empty",
-        "Email should not be empty",
-        "Email should be email format",
-        "Password should not be empty"
-    ]
-}
-OR
-{
-    "message": [
-        "This email is already taken"
-    ]
-}
-```
-
-&nbsp;
-
-## 7. POST /login
-
-Request:
-
-- body:
-
-```json
-{
-  "email": "string",
-  "password": "string"
-}
-```
-
-_Response (200 - OK)_
-
-```json
-{
-  "access_token": "string"
-}
-```
-
-_Response (400 - Bad Request)_
-
-```json
-{
-  "message": "Email is required"
-}
-OR
-{
-  "message": "Password is required"
-}
-```
-
-_Response (401 - Unauthorized)_
-
-```json
-{
-  "message": "Invalid email/password"
-}
-```
-
-&nbsp;
-
-## 8. POST /genres/add
+## 6. POST /genres/add
 
 Description:
 
@@ -382,6 +294,96 @@ _Response (400 - Bad Request)_
 ```
 
 &nbsp;
+
+## 7. POST /register
+
+Request:
+
+- body:
+
+```json
+{
+  "username": "string",
+  "email": "string",
+  "password": "string"
+  "phoneNumber": "string"
+  "address": "string"
+}
+```
+
+_Response (201 - Created)_
+
+```json
+{
+  "id": "integer",
+  "email": "string"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+    "message": [
+        "Username should not be empty",
+        "Email should not be empty",
+        "Email should be email format",
+        "Password should not be empty"
+    ]
+}
+OR
+{
+    "message": [
+        "This email is already taken"
+    ]
+}
+```
+
+&nbsp;
+
+## 8. POST /login
+
+Request:
+
+- body:
+
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+  "message": "Email is required"
+}
+OR
+{
+  "message": "Password is required"
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid email/password"
+}
+```
+
+&nbsp;
+
 
 ## Global Error
 
