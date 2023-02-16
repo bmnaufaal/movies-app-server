@@ -5,5 +5,6 @@ const genreRouter = require("express").Router();
 
 genreRouter.use(authentication);
 genreRouter.get("/", GenreController.findAll);
+genreRouter.post("/add", GenreController.create);
 
 module.exports = genreRouter;

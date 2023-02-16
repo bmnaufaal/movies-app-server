@@ -1,13 +1,14 @@
 $(document).ready(() => {
   $("#login-form").submit(handleLogin);
   $("#register-form").submit(handleRegister);
-  $("#product-form").submit(handleAddNewMovie);
   $("#nav-dashboard").click(showMoviesPage);
   $("#nav-movie").click(showMoviesPage);
   $("#nav-genre").click(showGenresPage);
   $("#new-product").click(showAddMoviePage);
   $("#new-category").click(showAddGenrePage);
   $("#nav-logout").click(handleLogout);
+  $("#product-form").submit(handleAddNewMovie);
+  $("#category-form").submit(handleAddNewGenre);
 
   let access_token = localStorage.getItem("access_token");
   if (access_token) {
@@ -252,6 +253,27 @@ function handleAddNewMovie(e) {
     })
     .fail((error) => {
       customToastify("Add Movies Data Failed");
+      console.log(error.responseJSON);
+    });
+}
+
+function handleAddNewGenre(e) {
+  e.preventDefault();
+  let name = $("#genre-name").val();
+  $.ajax({
+    url: baseUrl + "/genres/add",
+    method: "POST",
+    headers: {
+      access_token: localStorage.getItem("access_token"),
+    },
+    data: { name },
+  })
+    .done((response) => {
+      customToastify("Add Genre Data Success");
+      showGenresPage();
+    })
+    .fail((error) => {
+      customToastify("Add Genre Data Failed");
       console.log(error.responseJSON);
     });
 }

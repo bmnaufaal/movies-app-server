@@ -12,6 +12,16 @@ class GenreController {
       next(error);
     }
   }
+
+  static async create(req, res, next) {
+    try {
+      const { name } = req.body;
+      let createdGenre = await Genre.create({ name });
+      res.status(201).json(createdGenre);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = GenreController;
