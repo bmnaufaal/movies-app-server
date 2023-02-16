@@ -4,11 +4,11 @@ $(document).ready(() => {
   $("#nav-dashboard").click(showMoviesPage);
   $("#nav-movie").click(showMoviesPage);
   $("#nav-genre").click(showGenresPage);
-  $("#new-product").click(showAddMoviePage);
-  $("#new-category").click(showAddGenrePage);
+  $("#new-movie").click(showAddMoviePage);
+  $("#new-genre").click(showAddGenrePage);
   $("#nav-logout").click(handleLogout);
-  $("#product-form").submit(handleAddNewMovie);
-  $("#category-form").submit(handleAddNewGenre);
+  $("#movie-form").submit(handleAddNewMovie);
+  $("#genre-form").submit(handleAddNewGenre);
 
   let access_token = localStorage.getItem("access_token");
   if (access_token) {
@@ -44,10 +44,10 @@ function showMoviesPage(e) {
   $("#dashboard-section").show();
   $("#movie-card").show();
   $("#genre-card").hide();
-  $("#product-section").show();
-  $("#category-section").hide();
-  $("#new-product-section").hide();
-  $("#new-category-section").hide();
+  $("#movie-section").show();
+  $("#genre-section").hide();
+  $("#new-movie-section").hide();
+  $("#new-genre-section").hide();
 }
 
 function showAddMoviePage() {
@@ -55,10 +55,10 @@ function showAddMoviePage() {
   $("#dashboard-section").show();
   $("#movie-card").hide();
   $("#genre-card").hide();
-  $("#product-section").hide();
-  $("#category-section").hide();
-  $("#new-product-section").show();
-  $("#new-category-section").hide();
+  $("#movie-section").hide();
+  $("#genre-section").hide();
+  $("#new-movie-section").show();
+  $("#new-genre-section").hide();
 }
 
 function showGenresPage() {
@@ -67,10 +67,10 @@ function showGenresPage() {
   $("#dashboard-section").show();
   $("#movie-card").hide();
   $("#genre-card").show();
-  $("#product-section").hide();
-  $("#category-section").show();
-  $("#new-product-section").hide();
-  $("#new-category-section").hide();
+  $("#movie-section").hide();
+  $("#genre-section").show();
+  $("#new-movie-section").hide();
+  $("#new-genre-section").hide();
 }
 
 function showAddGenrePage() {
@@ -78,19 +78,19 @@ function showAddGenrePage() {
   $("#dashboard-section").show();
   $("#movie-card").hide();
   $("#genre-card").hide();
-  $("#product-section").hide();
-  $("#category-section").hide();
-  $("#new-product-section").hide();
-  $("#new-category-section").show();
+  $("#movie-section").hide();
+  $("#genre-section").hide();
+  $("#new-movie-section").hide();
+  $("#new-genre-section").show();
 }
 
 function isNotLoggedIn() {
   $("#home-section").hide();
   $("#dashboard-section").hide();
-  $("#product-section").hide();
-  $("#new-product-section").hide();
-  $("#category-section").hide();
-  $("#new-category-section").hide();
+  $("#movie-section").hide();
+  $("#new-movie-section").hide();
+  $("#genre-section").hide();
+  $("#new-genre-section").hide();
 }
 
 function handleLogin(e) {
@@ -159,10 +159,10 @@ function fetchMovies() {
     .done((moviesData) => {
       customToastify("Get Movies Data Success");
       console.log(moviesData);
-      $("#total-product").text(moviesData.length);
-      $("#table-product").empty();
+      $("#total-movie").text(moviesData.length);
+      $("#table-movie").empty();
       moviesData.forEach((movies) => {
-        $("#table-product").append(`
+        $("#table-movie").append(`
         <tr>
             <td>${movies.id}</td>
             <td>${movies.title}</td>
@@ -201,13 +201,13 @@ function fetchGenres() {
     .done((genresData) => {
       customToastify("Get Genre Data Success");
       console.log(genresData);
-      $("#total-category").text(genresData.length);
-      $("#table-category").empty();
+      $("#total-genre").text(genresData.length);
+      $("#table-genre").empty();
       genresData.forEach((genres) => {
         $("#movie-genreId").append(`
           <option value="${genres.id}">${genres.name}</option>
         `);
-        $("#table-category").append(`
+        $("#table-genre").append(`
           <tr>
               <td>${genres.id}</td>
               <td>${genres.name}</td>

@@ -301,7 +301,7 @@
                       <h6 class="card-subtitle mb-2 text-muted">
                         Total Movies
                       </h6>
-                      <h6 class="card-title card-number" id="total-product">
+                      <h6 class="card-title card-number" id="total-movie">
                         0
                       </h6>
                     </div>
@@ -313,7 +313,7 @@
                       <h6 class="card-subtitle mb-2 text-muted">
                         Total Genres
                       </h6>
-                      <h6 class="card-title card-number" id="total-category">
+                      <h6 class="card-title card-number" id="total-genre">
                         0
                       </h6>
                     </div>
@@ -325,16 +325,16 @@
         </section>
         <!-- End Dashboard Section -->
 
-        <!-- Product Section -->
+        <!-- Movie Section -->
         <section
           class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
-          id="product-section"
+          id="movie-section"
         >
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
             <h1 class="display-2">Movies</h1>
-            <button class="btn btn-primary rounded-pill" id="new-product">
+            <button class="btn btn-primary rounded-pill" id="new-movie">
               <span class="icon material-symbols-outlined">add</span>New Movie
             </button>
           </div>
@@ -354,17 +354,17 @@
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
-                <tbody id="table-product"></tbody>
+                <tbody id="table-movie"></tbody>
               </table>
             </div>
           </div>
         </section>
-        <!-- End Product Section -->
+        <!-- End Movie Section -->
 
-        <!-- New Product Section -->
+        <!-- New Movie Section -->
         <section
           class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
-          id="new-product-section"
+          id="new-movie-section"
         >
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
@@ -373,7 +373,7 @@
           </div>
           <div class="row">
             <div class="col-12 col-md-6">
-              <form id="product-form">
+              <form id="movie-form">
                 <div class="mb-3">
                   <label for="movie-title"
                     >Title <span class="text-danger fw-bold">*</span></label
@@ -472,18 +472,18 @@
             </div>
           </div>
         </section>
-        <!-- End New Product Section -->
+        <!-- End New Movie Section -->
 
-        <!-- Category Section -->
+        <!-- Genre Section -->
         <section
           class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
-          id="category-section"
+          id="genre-section"
         >
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
             <h1 class="display-2">Genres</h1>
-            <button class="btn btn-primary rounded-pill" id="new-category">
+            <button class="btn btn-primary rounded-pill" id="new-genre">
               <span class="icon material-symbols-outlined">add</span>New Genre
             </button>
           </div>
@@ -497,26 +497,26 @@
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
-                <tbody id="table-category"></tbody>
+                <tbody id="table-genre"></tbody>
               </table>
             </div>
           </div>
         </section>
-        <!-- End Category Section -->
+        <!-- End Genre Section -->
 
-        <!-- New Category Section -->
+        <!-- New Genre Section -->
         <section
           class="col-md-9 ms-sm-auto col-lg-10 px-md-4"
-          id="new-category-section"
+          id="new-genre-section"
         >
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
-            <h1 class="display-2">New Category</h1>
+            <h1 class="display-2">New Genre</h1>
           </div>
           <div class="row">
             <div class="col-12 col-md-6">
-              <form id="category-form">
+              <form id="genre-form">
                 <div class="mb-3">
                   <label for="genre-name"
                     >Name <span class="text-danger fw-bold">*</span></label
@@ -525,7 +525,7 @@
                     type="text"
                     class="form-control"
                     id="genre-name"
-                    placeholder="Enter category name"
+                    placeholder="Enter genre name"
                     autocomplete="off"
                     required
                   />
@@ -552,7 +552,7 @@
             </div>
           </div>
         </section>
-        <!-- End New Category Section -->
+        <!-- End New Genre Section -->
       </div>
     </section>
     <!-- End Home Section -->
