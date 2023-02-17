@@ -10,6 +10,7 @@ List of available endpoints:
 - `DELETE /movies/:id`
 - `GET /genres`
 - `POST /genres/add`
+- `DELETE /genres/:id`
 - `POST /register`
 - `POST /login`
 
@@ -295,7 +296,7 @@ _Response (400 - Bad Request)_
 
 &nbsp;
 
-## 4. DELETE /genres/:id
+## 7. DELETE /genres/:id
 
 Description:
 
