@@ -5,7 +5,18 @@ class MovieController {
   static async findAll(req, res, next) {
     try {
       const movies = await Movie.findAll({
-        include: [Genre, { model: User, as: "Author" }],
+        order: [["id", "ASC"]],
+        include: [
+          {
+            model: Genre,
+            attributes: ["id", "name"],
+          },
+          {
+            model: User,
+            as: "Author",
+            attributes: ["id", "username", "email", "role"],
+          },
+        ],
       });
       res.status(200).json(movies);
     } catch (error) {
@@ -17,10 +28,17 @@ class MovieController {
     const { id } = req.params;
     try {
       let foundMovie = await Movie.findByPk(id, {
-        include: [Genre, { model: User, as: "Author" }],
+        include: [
+          Genre,
+          {
+            model: User,
+            as: "Author",
+            attributes: ["id", "username", "email", "role"],
+          },
+        ],
       });
       if (!foundMovie) {
-        throw { name: "NotFound" };
+        throw { name: "MovieNotFound" };
       }
       res.status(200).json(foundMovie);
     } catch (error) {
@@ -29,9 +47,9 @@ class MovieController {
   }
 
   static async create(req, res, next) {
-    const { title, synopsis, trailerUrl, imgUrl, rating, genreId } =
-      req.body;
     try {
+      const { title, synopsis, trailerUrl, imgUrl, rating, genreId } = req.body;
+      const authorId = req.user.id;
       let createdMovie = await Movie.create({
         title,
         synopsis,
@@ -39,6 +57,7 @@ class MovieController {
         imgUrl,
         rating,
         genreId,
+        authorId,
       });
       res.status(201).json(createdMovie);
     } catch (error) {
@@ -51,7 +70,7 @@ class MovieController {
     try {
       let foundMovie = await Movie.findByPk(id);
       if (!foundMovie) {
-        throw { name: "NotFound" };
+        throw { name: "MovieNotFound" };
       }
       let deletedMovie = await Movie.destroy({
         where: {

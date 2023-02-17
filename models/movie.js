@@ -50,6 +50,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER,
         validate: {
+          notNull: {
+            msg: "Rating should not be null",
+          },
+          notEmpty: {
+            msg: "Rating should not be empty",
+          },
           isGreaterThanOne(value) {
             if (+value < 1) {
               throw new Error("Minimum rating is 1");

@@ -1,41 +1,41 @@
 [
   {
-    "username": "bmnaufaal",
-    "email": "bmnaufaal@gmail.com",
+    "username": "jimcash",
+    "email": "jimcash@gmail.com",
     "password": "123456",
-    "role": "admin",
+    "role": "Admin",
     "phoneNumber": "586-108-6312",
-    "address": "PO Box 74583"
+    "address": "PO Box 74583, California"
   },
   {
-    "username": "bkondratyuk1",
-    "email": "ucockerell1@wordpress.com",
-    "password": "q9UFdhScu4Jv",
-    "role": "staff",
+    "username": "jamescameron",
+    "email": "jamescameron@wordpress.com",
+    "password": "123456",
+    "role": "Staff",
     "phoneNumber": "683-747-2954",
-    "address": "Suite 42"
+    "address": "Suite 42, Florida"
   },
   {
-    "username": "jbernetti2",
-    "email": "asugg2@omniture.com",
-    "password": "NyIurUQfww",
-    "role": "admin",
+    "username": "neildruckmann",
+    "email": "neildruckmann@omniture.com",
+    "password": "123456",
+    "role": "Admin",
     "phoneNumber": "172-749-5177",
-    "address": "PO Box 58112"
+    "address": "PO Box 58112, Chicago"
   },
   {
-    "username": "bmacnalley3",
-    "email": "laldrin3@imgur.com",
-    "password": "OEloQtpKV7",
-    "role": "staff",
+    "username": "haileesteinfield",
+    "email": "haileesteinfield@imgur.com",
+    "password": "123456",
+    "role": "Staff",
     "phoneNumber": "353-864-7599",
-    "address": "PO Box 92368"
+    "address": "PO Box 92368, Ohio"
   },
   {
     "username": "mslavin4",
     "email": "bscading4@omniture.com",
     "password": "lVYwIiLVBL7",
-    "role": "admin",
+    "role": "Admin",
     "phoneNumber": "644-767-4991",
     "address": "Room 1201"
   }
