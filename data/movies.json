@@ -1,47 +1,47 @@
 [
   {
-    "title": "Deliver Us From Evil",
-    "synopsis": "Crime|Drama",
-    "trailerUrl": "http://dummyimage.com/178x100.png/dddddd/000000",
-    "imgUrl": "http://dummyimage.com/103x100.png/5fa2dd/ffffff",
-    "rating": 4,
+    "title": "The Last Of Us",
+    "synopsis": "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope.",
+    "trailerUrl": "https://www.youtube.com/watch?v=uLtkt8BonwM&ab_channel=HBOMax",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BZGUzYTI3M2EtZmM0Yy00NGUyLWI4ODEtN2Q3ZGJlYzhhZjU3XkEyXkFqcGdeQXVyNTM0OTY1OQ@@._V1_FMjpg_UX1000_.jpg",
+    "rating": 9,
     "genreId": 3,
+    "authorId": 3
+  },
+  {
+    "title": "Arcane",
+    "synopsis": "Set in utopian Piltover and the oppressed underground of Zaun, the story follows the origins of two iconic League champions-and the power that will tear them apart.",
+    "trailerUrl": "https://www.youtube.com/watch?v=fXmAurh012s&ab_channel=Netflix",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BYmU5OWM5ZTAtNjUzOC00NmUyLTgyOWMtMjlkNjdlMDAzMzU1XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_FMjpg_UX1000_.jpg",
+    "rating": 10,
+    "genreId": 1,
     "authorId": 4
   },
   {
-    "title": "Attila",
-    "synopsis": "Action|Horror|Thriller",
-    "trailerUrl": "http://dummyimage.com/234x100.png/ff4444/ffffff",
-    "imgUrl": "http://dummyimage.com/207x100.png/5fa2dd/ffffff",
-    "rating": 3,
-    "genreId": 2,
-    "authorId": 2
-  },
-  {
-    "title": "Quo Vadis, Baby?",
-    "synopsis": "Drama|Thriller",
-    "trailerUrl": "http://dummyimage.com/170x100.png/5fa2dd/ffffff",
-    "imgUrl": "http://dummyimage.com/205x100.png/cc0000/ffffff",
-    "rating": 1,
-    "genreId": 2,
+    "title": "Love, Death & Robots",
+    "synopsis": "A collection of animated short stories that span various genres including science fiction, fantasy, horror and comedy.",
+    "trailerUrl": "https://www.youtube.com/watch?v=wUFwunMKa4E&ab_channel=Netflix",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BYTNiYTNkNTAtYzE3ZS00ZDQ1LWEwZTYtZjI1NzYzMWJjY2U4XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_FMjpg_UX1000_.jpg",
+    "rating": 10,
+    "genreId": 5,
     "authorId": 5
   },
   {
-    "title": "What! No Beer?",
-    "synopsis": "Comedy",
-    "trailerUrl": "http://dummyimage.com/206x100.png/dddddd/000000",
-    "imgUrl": "http://dummyimage.com/103x100.png/dddddd/000000",
-    "rating": 3,
-    "genreId": 5,
+    "title": "Top Gun: Maverick",
+    "synopsis": "After thirty years, Maverick is still pushing the envelope as a top naval aviator, but must confront ghosts of his past when he leads TOP GUN's elite graduates on a mission that demands the ultimate sacrifice from those chosen to fly it",
+    "trailerUrl": "https://www.youtube.com/watch?v=YDJQGlcTlCA&t=1s&ab_channel=MovieCoverage",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg",
+    "rating": 8,
+    "genreId": 1,
     "authorId": 4
   },
   {
-    "title": "Silent One, The",
-    "synopsis": "Adventure|Children|Drama",
-    "trailerUrl": "http://dummyimage.com/159x100.png/dddddd/000000",
-    "imgUrl": "http://dummyimage.com/170x100.png/5fa2dd/ffffff",
-    "rating": 2,
-    "genreId": 5,
-    "authorId": 1
+    "title": "Avatar: The Way of Water",
+    "synopsis": "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.",
+    "trailerUrl": "https://www.youtube.com/watch?v=6QPL2UWvbUw&ab_channel=MovieCoverage",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_FMjpg_UX1000_.jpg",
+    "rating": 7,
+    "genreId": 1,
+    "authorId": 2
   }
 ]

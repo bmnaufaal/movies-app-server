@@ -1,17 +1,17 @@
 [
   {
-    "name": "Comedy"
+    "name": "Action"
   },
   {
     "name": "Drama"
   },
   {
-    "name": "Documentary|Drama"
-  },
-  {
-    "name": "Fantasy|Musical"
+    "name": "Thriller"
   },
   {
     "name": "Animation"
+  },
+  {
+    "name": "Romance"
   }
 ]
