@@ -38,7 +38,7 @@ class MovieController {
         ],
       });
       if (!foundMovie) {
-        throw { name: "NotFound" };
+        throw { name: "MovieNotFound" };
       }
       res.status(200).json(foundMovie);
     } catch (error) {
@@ -70,7 +70,7 @@ class MovieController {
     try {
       let foundMovie = await Movie.findByPk(id);
       if (!foundMovie) {
-        throw { name: "NotFound" };
+        throw { name: "MovieNotFound" };
       }
       let deletedMovie = await Movie.destroy({
         where: {

@@ -295,7 +295,49 @@ _Response (400 - Bad Request)_
 
 &nbsp;
 
-## 7. POST /register
+## 4. DELETE /genres/:id
+
+Description:
+
+- Delete genres by id
+
+Request:
+
+- headers: 
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "message": "Genre 1 success to delete"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "Genre not found"
+}
+```
+
+&nbsp;
+
+## 8. POST /register
 
 Request:
 
@@ -341,7 +383,7 @@ OR
 
 &nbsp;
 
-## 8. POST /login
+## 9. POST /login
 
 Request:
 

@@ -22,6 +22,27 @@ class GenreController {
       next(error);
     }
   }
+
+  static async delete(req, res, next) {
+    const { id } = req.params;
+    try {
+      let foundGenre = await Genre.findByPk(id);
+      if (!foundGenre) {
+        throw { name: "GenreNotFound" };
+      }
+      let deletedGenre = await Genre.destroy({
+        where: {
+          id: id,
+        },
+      });
+      console.log(deletedGenre);
+      res.status(200).json({
+        message: `${foundGenre.name} success to delete`,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = GenreController;

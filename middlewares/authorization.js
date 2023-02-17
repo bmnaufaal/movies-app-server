@@ -4,7 +4,7 @@ async function authorization(req, res, next) {
   try {
     let movieId = req.params.id;
     let movie = await Movie.findByPk(movieId);
-    if (!movie) throw { name: "NotFound" };
+    if (!movie) throw { name: "MovieNotFound" };
     if (req.user.id !== movie.authorId && req.user.role !== "Admin")
       throw { name: "Forbidden" };
     next();
