@@ -22,7 +22,7 @@ Description:
 
 Request:
 
-- headers: 
+- headers:
 
 ```json
 {
@@ -60,8 +60,15 @@ _Response (200 - OK)_
 ]
 ```
 
-&nbsp;
+_Response (401 - Unauthorized)_
 
+```json
+{
+  "message": "Invalid Token"
+}
+```
+
+&nbsp;
 
 ## 2. POST /movies/add
 
@@ -71,7 +78,7 @@ Description:
 
 Request:
 
-- headers: 
+- headers:
 
 ```json
 {
@@ -97,16 +104,16 @@ _Response (201 - Created)_
 
 ```json
 {
-    "id": 8,
-    "title": "Fight Club",
-    "synopsis": "A depressed man (Edward Norton) suffering from insomnia meets a strange soap salesman named Tyler Durden (Brad Pitt) and soon finds himself living in his squalid house after his perfect apartment is destroyed. The two bored men form an underground club with strict rules and fight other men who are fed up with their mundane lives. Their perfect partnership frays when Marla (Helena Bonham Carter), a fellow support group crasher, attracts Tyler's attention.",
-    "trailerUrl": "https://www.youtube.com/watch?v=qtRKdVHc-cE&ab_channel=RottenTomatoesClassicTrailers",
-    "imgUrl": "https://resizing.flixster.com/0kbkzWG-fGf5yEZSmLw4VB_SpnQ=/206x305/v2/https://flxt.tmsimg.com/assets/p23069_p_v8_aa.jpg",
-    "rating": 10,
-    "genreId": 1,
-    "authorId": 7,
-    "updatedAt": "2023-02-15T04:33:59.370Z",
-    "createdAt": "2023-02-15T04:33:59.370Z"
+  "id": 8,
+  "title": "Fight Club",
+  "synopsis": "A depressed man (Edward Norton) suffering from insomnia meets a strange soap salesman named Tyler Durden (Brad Pitt) and soon finds himself living in his squalid house after his perfect apartment is destroyed. The two bored men form an underground club with strict rules and fight other men who are fed up with their mundane lives. Their perfect partnership frays when Marla (Helena Bonham Carter), a fellow support group crasher, attracts Tyler's attention.",
+  "trailerUrl": "https://www.youtube.com/watch?v=qtRKdVHc-cE&ab_channel=RottenTomatoesClassicTrailers",
+  "imgUrl": "https://resizing.flixster.com/0kbkzWG-fGf5yEZSmLw4VB_SpnQ=/206x305/v2/https://flxt.tmsimg.com/assets/p23069_p_v8_aa.jpg",
+  "rating": 10,
+  "genreId": 1,
+  "authorId": 7,
+  "updatedAt": "2023-02-15T04:33:59.370Z",
+  "createdAt": "2023-02-15T04:33:59.370Z"
 }
 ```
 
@@ -114,11 +121,19 @@ _Response (400 - Bad Request)_
 
 ```json
 {
-    "message": [
-        "Title should not be null",
-        "Synopsis should not be null",
-        "Minimum rating is 1"
-    ]
+  "message": [
+    "Title should not be null",
+    "Synopsis should not be null",
+    "Minimum rating is 1"
+  ]
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid Token"
 }
 ```
 
@@ -132,7 +147,7 @@ Description:
 
 Request:
 
-- headers: 
+- headers:
 
 ```json
 {
@@ -173,6 +188,14 @@ _Response (404 - Not Found)_
 }
 ```
 
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid Token"
+}
+```
+
 &nbsp;
 
 ## 4. DELETE /movies/:id
@@ -183,7 +206,7 @@ Description:
 
 Request:
 
-- headers: 
+- headers:
 
 ```json
 {
@@ -215,6 +238,14 @@ _Response (404 - Not Found)_
 }
 ```
 
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid Token"
+}
+```
+
 &nbsp;
 
 ## 5. GET /genres
@@ -225,7 +256,7 @@ Description:
 
 Request:
 
-- headers: 
+- headers:
 
 ```json
 {
@@ -247,6 +278,14 @@ _Response (200 - OK)_
 ]
 ```
 
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid Token"
+}
+```
+
 &nbsp;
 
 ## 6. POST /genres/add
@@ -257,7 +296,7 @@ Description:
 
 Request:
 
-- headers: 
+- headers:
 
 ```json
 {
@@ -277,10 +316,10 @@ _Response (201 - Created)_
 
 ```json
 {
-    "id": 6,
-    "name": "Genre 1",
-    "updatedAt": "2023-02-16T01:23:45.994Z",
-    "createdAt": "2023-02-16T01:23:45.994Z"
+  "id": 6,
+  "name": "Genre 1",
+  "updatedAt": "2023-02-16T01:23:45.994Z",
+  "createdAt": "2023-02-16T01:23:45.994Z"
 }
 ```
 
@@ -288,9 +327,15 @@ _Response (400 - Bad Request)_
 
 ```json
 {
-    "message": [
-        "Genre name should not be null"
-    ]
+  "message": ["Genre name should not be null"]
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid Token"
 }
 ```
 
@@ -304,7 +349,7 @@ Description:
 
 Request:
 
-- headers: 
+- headers:
 
 ```json
 {
@@ -333,6 +378,22 @@ _Response (404 - Not Found)_
 ```json
 {
   "message": "Genre not found"
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid Token"
+}
+```
+
+_Response (403 - Forbidden)_
+
+```json
+{
+  "message": "Forbidden"
 }
 ```
 
@@ -426,7 +487,6 @@ _Response (401 - Unauthorized)_
 ```
 
 &nbsp;
-
 
 ## Global Error
 
