@@ -65,21 +65,34 @@ class MovieController {
     }
   }
 
-  static async delete(req, res, next) {
+  static async update(req, res, next) {
     const { id } = req.params;
+    const { title, synopsis, trailerUrl, imgUrl, rating, genreId, authorId } =
+      req.body;
     try {
       let foundMovie = await Movie.findByPk(id);
       if (!foundMovie) {
         throw { name: "MovieNotFound" };
       }
-      let deletedMovie = await Movie.destroy({
-        where: {
-          id: id,
+      let deletedMovie = await Movie.update(
+        {
+          title: title,
+          synopsis: synopsis,
+          trailerUr: trailerUrl,
+          imgUrl: imgUrl,
+          rating: rating,
+          genreId: genreId,
+          authorId: authorId,
         },
-      });
+        {
+          where: {
+            id: id,
+          },
+        }
+      );
       console.log(deletedMovie);
       res.status(200).json({
-        message: `${foundMovie.title} success to delete`,
+        message: `${foundMovie.title} success to edit`,
       });
     } catch (error) {
       next(error);
