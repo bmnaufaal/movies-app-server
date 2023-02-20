@@ -67,14 +67,14 @@ class MovieController {
 
   static async update(req, res, next) {
     const { id } = req.params;
-    const { title, synopsis, trailerUrl, imgUrl, rating, genreId, authorId } =
+    const { title, synopsis, trailerUrl, imgUrl, rating, genreId, authorId, status } =
       req.body;
     try {
       let foundMovie = await Movie.findByPk(id);
       if (!foundMovie) {
         throw { name: "MovieNotFound" };
       }
-      let deletedMovie = await Movie.update(
+      let updatedMovie = await Movie.update(
         {
           title: title,
           synopsis: synopsis,
@@ -83,6 +83,7 @@ class MovieController {
           rating: rating,
           genreId: genreId,
           authorId: authorId,
+          status: status
         },
         {
           where: {
@@ -90,7 +91,7 @@ class MovieController {
           },
         }
       );
-      console.log(deletedMovie);
+      console.log(updatedMovie);
       res.status(200).json({
         message: `${foundMovie.title} success to edit`,
       });

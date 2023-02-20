@@ -8,6 +8,6 @@ movieRouter.use(authentication);
 movieRouter.get("/", MovieController.findAll);
 movieRouter.get("/:id", MovieController.findOne);
 movieRouter.post("/add", MovieController.create);
-movieRouter.put("/:id", authorization, MovieController.edit);
+movieRouter.put("/:id", authorization, MovieController.update);
 
 module.exports = movieRouter;
