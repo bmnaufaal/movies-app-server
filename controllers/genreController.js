@@ -48,6 +48,36 @@ class GenreController {
       next(error);
     }
   }
+
+  static async update(req, res, next) {
+    const { id } = req.params;
+    const { name } = req.body;
+    try {
+      let foundGenre = await Genre.findByPk(id);
+      if (!foundGenre) {
+        throw { name: "GenreNotFound" };
+      }
+      let updatedGenre = await Movie.update(
+        { name },
+        {
+          where: {
+            id: id,
+          },
+        }
+      );
+      console.log(updatedGenre);
+      await History.create({
+        name: "PUT",
+        description: `New Genre with id ${id} updated`,
+        updatedBy: req.user.username,
+      });
+      res.status(200).json({
+        message: `${foundGenre.name} success to edit`,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = GenreController;
