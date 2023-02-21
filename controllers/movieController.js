@@ -1,5 +1,5 @@
 "use strict";
-const { Movie, Genre, User } = require("../models");
+const { Movie, Genre, User, History } = require("../models");
 
 class MovieController {
   static async findAll(req, res, next) {
@@ -58,6 +58,12 @@ class MovieController {
         rating,
         genreId,
         authorId,
+        status: "Active",
+      });
+      await History.create({
+        name: "POST",
+        description: `New Movie with id ${createdMovie.id} created`,
+        updatedBy: req.user.username,
       });
       res.status(201).json(createdMovie);
     } catch (error) {
@@ -121,6 +127,11 @@ class MovieController {
         }
       );
       console.log(updatedMovie);
+      await History.create({
+        name: "PUT",
+        description: `New Movie with id ${id} updated`,
+        updatedBy: req.user.username,
+      });
       res.status(200).json({
         message: `${foundMovie.title} success to edit`,
       });
@@ -148,6 +159,11 @@ class MovieController {
         }
       );
       console.log(updatedMovieStatus);
+      await History.create({
+        name: "PATCH",
+        description: `New Movie status with id ${id} has been updated from ${foundMovie.status} to ${status}`,
+        updatedBy: req.user.username,
+      });
       res.status(200).json({
         message: `${foundMovie.title} success to edit status`,
       });

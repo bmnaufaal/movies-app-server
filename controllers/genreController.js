@@ -1,5 +1,5 @@
 "use strict";
-const { Movie, Genre, User } = require("../models");
+const { Movie, Genre, User, History } = require("../models");
 
 class GenreController {
   static async findAll(req, res, next) {
@@ -18,6 +18,11 @@ class GenreController {
       const { name } = req.body;
       let createdGenre = await Genre.create({ name });
       res.status(201).json(createdGenre);
+      await History.create({
+        name: "POST",
+        description: `New Genre with id ${createdGenre.id} created`,
+        updatedBy: req.user.username,
+      });
     } catch (error) {
       next(error);
     }
