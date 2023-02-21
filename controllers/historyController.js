@@ -5,7 +5,7 @@ class HistoryController {
   static async findAll(req, res, next) {
     try {
       const histories = await History.findAll({
-        order: [["id", "ASC"]],
+        order: [["id", "DESC"]],
       });
       res.status(200).json(histories);
     } catch (error) {
