@@ -65,10 +65,39 @@ class MovieController {
     }
   }
 
+  static async delete(req, res, next) {
+    const { id } = req.params;
+    try {
+      let foundMovie = await Movie.findByPk(id);
+      if (!foundMovie) {
+        throw { name: "MovieNotFound" };
+      }
+      let deletedMovie = await Movie.destroy({
+        where: {
+          id: id,
+        },
+      });
+      console.log(deletedMovie);
+      res.status(200).json({
+        message: `${foundMovie.title} success to delete`,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async update(req, res, next) {
     const { id } = req.params;
-    const { title, synopsis, trailerUrl, imgUrl, rating, genreId, authorId, status } =
-      req.body;
+    const {
+      title,
+      synopsis,
+      trailerUrl,
+      imgUrl,
+      rating,
+      genreId,
+      authorId,
+      status,
+    } = req.body;
     try {
       let foundMovie = await Movie.findByPk(id);
       if (!foundMovie) {
@@ -83,7 +112,7 @@ class MovieController {
           rating: rating,
           genreId: genreId,
           authorId: authorId,
-          status: status
+          status: status,
         },
         {
           where: {
@@ -94,6 +123,33 @@ class MovieController {
       console.log(updatedMovie);
       res.status(200).json({
         message: `${foundMovie.title} success to edit`,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async updateStatus(req, res, next) {
+    const { id } = req.params;
+    const { status } = req.body;
+    try {
+      let foundMovie = await Movie.findByPk(id);
+      if (!foundMovie) {
+        throw { name: "MovieNotFound" };
+      }
+      let updatedMovieStatus = await Movie.update(
+        {
+          status: status,
+        },
+        {
+          where: {
+            id: id,
+          },
+        }
+      );
+      console.log(updatedMovieStatus);
+      res.status(200).json({
+        message: `${foundMovie.title} success to edit status`,
       });
     } catch (error) {
       next(error);
