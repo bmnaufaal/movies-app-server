@@ -30,7 +30,7 @@ function errorHandler(error, req, res, next) {
       break;
     case "Forbidden":
       status = 403;
-      message = "Forbidden";
+      message = "Not authorized";
       break;
     case "InvalidCredentials":
       status = 401;
@@ -38,15 +38,15 @@ function errorHandler(error, req, res, next) {
       break;
     case "MovieNotFound":
       status = 404;
-      message = "Movie Not Found";
+      message = "Movie not found";
       break;
     case "GenreNotFound":
       status = 404;
-      message = "Genre Not Found";
+      message = "Genre not found";
       break;
     default:
       status = 500;
-      message = "Internal Server Error";
+      message = "Internal server error";
       break;
   }
 
