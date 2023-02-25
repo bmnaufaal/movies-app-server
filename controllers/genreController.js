@@ -68,7 +68,7 @@ class GenreController {
       console.log(updatedGenre);
       await History.create({
         name: "PUT",
-        description: `New Genre with id ${id} updated`,
+        description: `Genre with id ${id} updated`,
         updatedBy: req.user.username,
       });
       res.status(200).json({

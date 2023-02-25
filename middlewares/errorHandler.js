@@ -6,7 +6,7 @@ function errorHandler(error, req, res, next) {
     case "JsonWebTokenError":
     case "InvalidAccessToken":
       status = 401;
-      message = "Invalid Token";
+      message = "Invalid token";
       break;
     case "Unauthenticated":
       status = 401;

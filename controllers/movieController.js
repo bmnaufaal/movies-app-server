@@ -94,6 +94,7 @@ class MovieController {
 
   static async update(req, res, next) {
     const { id } = req.params;
+    const authorId = req.user.id;
     const {
       title,
       synopsis,
@@ -101,7 +102,7 @@ class MovieController {
       imgUrl,
       rating,
       genreId,
-      authorId,
+      authorId: 
       status,
     } = req.body;
     try {
@@ -129,7 +130,7 @@ class MovieController {
       console.log(updatedMovie);
       await History.create({
         name: "PUT",
-        description: `New Movie with id ${id} updated`,
+        description: `Movie with id ${id} updated`,
         updatedBy: req.user.username,
       });
       res.status(200).json({
@@ -161,7 +162,7 @@ class MovieController {
       console.log(updatedMovieStatus);
       await History.create({
         name: "PATCH",
-        description: `New Movie status with id ${id} has been updated from ${foundMovie.status} to ${status}`,
+        description: `Movie status with id ${id} has been updated from ${foundMovie.status} to ${status}`,
         updatedBy: req.user.username,
       });
       res.status(200).json({
