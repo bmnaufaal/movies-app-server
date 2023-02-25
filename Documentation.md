@@ -51,19 +51,31 @@ _Response (200 - OK)_
 ```json
 [
   {
-      "id": 10,
-      "title": "Fight Club",
-      "synopsis": "A depressed man (Edward Norton) suffering from insomnia meets a strange soap salesman named Tyler Durden (Brad Pitt) and soon finds himself living in his squalid house after his perfect apartment is destroyed. The two bored men form an underground club with strict rules and fight other men who are fed up with their mundane lives. Their perfect partnership frays when Marla (Helena Bonham Carter), a fellow support group crasher, attracts Tyler's attention.",
-      "trailerUrl": "https://www.youtube.com/watch?v=qtRKdVHc-cE&ab_channel=RottenTomatoesClassicTrailers",
-      "imgUrl": "https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg",
-      "rating": 10,
-      "genreId": 1,
-      "authorId": 3,
-      "status": "Active",
-      "updatedAt": "2023-02-25T11:30:26.075Z",
-      "createdAt": "2023-02-25T11:30:26.075Z"
+    "id": 1,
+    "title": "The Last Of Us",
+    "synopsis": "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope.",
+    "trailerUrl": "https://www.youtube.com/watch?v=uLtkt8BonwM&ab_channel=HBOMax",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BZGUzYTI3M2EtZmM0Yy00NGUyLWI4ODEtN2Q3ZGJlYzhhZjU3XkEyXkFqcGdeQXVyNTM0OTY1OQ@@._V1_FMjpg_UX1000_.jpg",
+    "rating": 9,
+    "genreId": 3,
+    "authorId": 3,
+    "status": "Active",
+    "createdAt": "2023-02-23T12:16:35.420Z",
+    "updatedAt": "2023-02-23T12:16:35.420Z",
+    "Genre": {
+      "id": 3,
+      "name": "Thriller",
+      "createdAt": "2023-02-23T12:16:35.418Z",
+      "updatedAt": "2023-02-23T12:16:35.418Z"
+    },
+    "Author": {
+      "id": 3,
+      "username": "neildruckmann",
+      "email": "neildruckmann@omniture.com",
+      "role": "Admin"
+    }
   },
-    ...,
+  ...,
 ]
 ```
 
@@ -111,17 +123,17 @@ _Response (201 - Created)_
 
 ```json
 {
-  "id": 8,
+  "id": 10,
   "title": "Fight Club",
   "synopsis": "A depressed man (Edward Norton) suffering from insomnia meets a strange soap salesman named Tyler Durden (Brad Pitt) and soon finds himself living in his squalid house after his perfect apartment is destroyed. The two bored men form an underground club with strict rules and fight other men who are fed up with their mundane lives. Their perfect partnership frays when Marla (Helena Bonham Carter), a fellow support group crasher, attracts Tyler's attention.",
   "trailerUrl": "https://www.youtube.com/watch?v=qtRKdVHc-cE&ab_channel=RottenTomatoesClassicTrailers",
-  "imgUrl": "https://resizing.flixster.com/0kbkzWG-fGf5yEZSmLw4VB_SpnQ=/206x305/v2/https://flxt.tmsimg.com/assets/p23069_p_v8_aa.jpg",
+  "imgUrl": "https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg",
   "rating": 10,
   "genreId": 1,
-  "authorId": 7,
+  "authorId": 3,
   "status": "Active",
-  "updatedAt": "2023-02-15T04:33:59.370Z",
-  "createdAt": "2023-02-15T04:33:59.370Z"
+  "updatedAt": "2023-02-25T11:30:26.075Z",
+  "createdAt": "2023-02-25T11:30:26.075Z"
 }
 ```
 
@@ -183,13 +195,14 @@ _Response (200 - OK)_
   "rating": 9,
   "genreId": 3,
   "authorId": 3,
-  "createdAt": "2023-02-17T07:20:20.512Z",
-  "updatedAt": "2023-02-17T07:20:20.512Z",
+  "status": "Active",
+  "createdAt": "2023-02-23T12:16:35.420Z",
+  "updatedAt": "2023-02-23T12:16:35.420Z",
   "Genre": {
     "id": 3,
     "name": "Thriller",
-    "createdAt": "2023-02-17T07:20:20.231Z",
-    "updatedAt": "2023-02-17T07:20:20.231Z"
+    "createdAt": "2023-02-23T12:16:35.418Z",
+    "updatedAt": "2023-02-23T12:16:35.418Z"
   },
   "Author": {
     "id": 3,
