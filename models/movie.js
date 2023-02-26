@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       Movie.belongsTo(models.User, {
         foreignKey: "authorId",
-        as: "Author"
+        as: "Author",
       });
     }
   }
@@ -65,6 +65,18 @@ module.exports = (sequelize, DataTypes) => {
       },
       genreId: DataTypes.INTEGER,
       authorId: DataTypes.INTEGER,
+      status: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notNull: {
+            msg: "Status should not be null",
+          },
+          notEmpty: {
+            msg: "Status should not be empty",
+          },
+        },
+      },
     },
     {
       sequelize,

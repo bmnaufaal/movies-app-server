@@ -1,3 +1,0 @@
-demo_gardenia_123 
-
-postgresql://postgres:demo_gardenia_123@db.bdmrrsfrrvcnrnzyyozj.supabase.co:5432/postgres

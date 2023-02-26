@@ -1,18 +1,35 @@
-# Movie API Documentation
+# Movies App API Documentation
 
 ## Endpoints :
 
 List of available endpoints:
 
+## Movies :
+
 - `GET /movies`
 - `POST /modes/add`
 - `GET /movies/:id`
+- `PUT /movies/:id`
+- `PATCH /movies/:id`
 - `DELETE /movies/:id`
+
+## Genres :
+
 - `GET /genres`
+- `GET /genres/:id`
 - `POST /genres/add`
+- `PUT /genres/:id`
 - `DELETE /genres/:id`
+
+## Histories :
+
+- `GET /histories`
+
+## User :
+
 - `POST /register`
 - `POST /login`
+- `POST /google-sign-in`
 
 ## 1. GET /movies
 
@@ -34,29 +51,32 @@ _Response (200 - OK)_
 
 ```json
 [
-    {
-        "id": 3,
-        "title": "Quo Vadis, Baby?",
-        "synopsis": "Drama|Thriller",
-        "trailerUrl": "http://dummyimage.com/170x100.png/5fa2dd/ffffff",
-        "imgUrl": "http://dummyimage.com/205x100.png/cc0000/ffffff",
-        "rating": 1,
-        "genreId": 2,
-        "authorId": 5,
-        "createdAt": "2023-02-14T09:03:11.085Z",
-        "updatedAt": "2023-02-14T09:03:11.085Z",
-        "Genre": {
-            "id": 2,
-            "name": "Drama"
-        },
-        "Author": {
-            "id": 5,
-            "username": "mslavin4",
-            "email": "bscading4@omniture.com",
-            "role": "admin"
-        }
+  {
+    "id": 1,
+    "title": "The Last Of Us",
+    "synopsis": "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope.",
+    "trailerUrl": "https://www.youtube.com/watch?v=uLtkt8BonwM&ab_channel=HBOMax",
+    "imgUrl": "https://m.media-amazon.com/images/M/MV5BZGUzYTI3M2EtZmM0Yy00NGUyLWI4ODEtN2Q3ZGJlYzhhZjU3XkEyXkFqcGdeQXVyNTM0OTY1OQ@@._V1_FMjpg_UX1000_.jpg",
+    "rating": 9,
+    "genreId": 3,
+    "authorId": 3,
+    "status": "Active",
+    "createdAt": "2023-02-23T12:16:35.420Z",
+    "updatedAt": "2023-02-23T12:16:35.420Z",
+    "Genre": {
+      "id": 3,
+      "name": "Thriller",
+      "createdAt": "2023-02-23T12:16:35.418Z",
+      "updatedAt": "2023-02-23T12:16:35.418Z"
     },
-    ...,
+    "Author": {
+      "id": 3,
+      "username": "neildruckmann",
+      "email": "neildruckmann@omniture.com",
+      "role": "Admin"
+    }
+  },
+  ...,
 ]
 ```
 
@@ -64,7 +84,7 @@ _Response (401 - Unauthorized)_
 
 ```json
 {
-  "message": "Invalid Token"
+  "message": "Invalid token"
 }
 ```
 
@@ -95,8 +115,7 @@ Request:
   "trailerUrl": "string",
   "imgUrl": "string",
   "rating": "integer",
-  "genreId": "integer",
-  "authorId": "integer"
+  "genreId": "integer"
 }
 ```
 
@@ -104,16 +123,17 @@ _Response (201 - Created)_
 
 ```json
 {
-  "id": 8,
+  "id": 10,
   "title": "Fight Club",
   "synopsis": "A depressed man (Edward Norton) suffering from insomnia meets a strange soap salesman named Tyler Durden (Brad Pitt) and soon finds himself living in his squalid house after his perfect apartment is destroyed. The two bored men form an underground club with strict rules and fight other men who are fed up with their mundane lives. Their perfect partnership frays when Marla (Helena Bonham Carter), a fellow support group crasher, attracts Tyler's attention.",
   "trailerUrl": "https://www.youtube.com/watch?v=qtRKdVHc-cE&ab_channel=RottenTomatoesClassicTrailers",
-  "imgUrl": "https://resizing.flixster.com/0kbkzWG-fGf5yEZSmLw4VB_SpnQ=/206x305/v2/https://flxt.tmsimg.com/assets/p23069_p_v8_aa.jpg",
+  "imgUrl": "https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg",
   "rating": 10,
   "genreId": 1,
-  "authorId": 7,
-  "updatedAt": "2023-02-15T04:33:59.370Z",
-  "createdAt": "2023-02-15T04:33:59.370Z"
+  "authorId": 3,
+  "status": "Active",
+  "updatedAt": "2023-02-25T11:30:26.075Z",
+  "createdAt": "2023-02-25T11:30:26.075Z"
 }
 ```
 
@@ -133,7 +153,7 @@ _Response (401 - Unauthorized)_
 
 ```json
 {
-  "message": "Invalid Token"
+  "message": "Invalid token"
 }
 ```
 
@@ -167,16 +187,29 @@ _Response (200 - OK)_
 
 ```json
 {
-  "id": 11,
-  "title": "Fight Club",
-  "synopsis": "lorem ipsum",
-  "trailerUrl": "https://www.google.com",
-  "imgUrl": "https://www.google.com",
-  "rating": 10,
-  "genreId": 1,
-  "authorId": 1,
-  "createdAt": "2023-02-14T00:44:34.686Z",
-  "updatedAt": "2023-02-14T00:44:34.686Z"
+  "id": 1,
+  "title": "The Last Of Us",
+  "synopsis": "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope.",
+  "trailerUrl": "https://www.youtube.com/watch?v=uLtkt8BonwM&ab_channel=HBOMax",
+  "imgUrl": "https://m.media-amazon.com/images/M/MV5BZGUzYTI3M2EtZmM0Yy00NGUyLWI4ODEtN2Q3ZGJlYzhhZjU3XkEyXkFqcGdeQXVyNTM0OTY1OQ@@._V1_FMjpg_UX1000_.jpg",
+  "rating": 9,
+  "genreId": 3,
+  "authorId": 3,
+  "status": "Active",
+  "createdAt": "2023-02-23T12:16:35.420Z",
+  "updatedAt": "2023-02-23T12:16:35.420Z",
+  "Genre": {
+    "id": 3,
+    "name": "Thriller",
+    "createdAt": "2023-02-23T12:16:35.418Z",
+    "updatedAt": "2023-02-23T12:16:35.418Z"
+  },
+  "Author": {
+    "id": 3,
+    "username": "neildruckmann",
+    "email": "neildruckmann@omniture.com",
+    "role": "Admin"
+  }
 }
 ```
 
@@ -192,13 +225,134 @@ _Response (401 - Unauthorized)_
 
 ```json
 {
-  "message": "Invalid Token"
+  "message": "Invalid token"
 }
 ```
 
 &nbsp;
 
-## 4. DELETE /movies/:id
+## 4. PUT /movies/:id
+
+Description:
+
+- Edit movie by id
+
+Request:
+
+- headers:
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+- body:
+
+```json
+{
+  "title": "string",
+  "synopsis": "string",
+  "trailerUrl": "string",
+  "imgUrl": "string",
+  "rating": "integer",
+  "genreId": "integer"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "message": "Fight Club success to edit"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "Movie not found"
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid token"
+}
+```
+
+&nbsp;
+
+## 5. PATCH /movies/:id
+
+Description:
+
+- Edit movie by id
+
+Request:
+
+- headers:
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+- body:
+
+```json
+{
+  "status": "string"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "message": "Fight Club success to edit status"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "Movie not found"
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid token"
+}
+```
+
+&nbsp;
+
+## 6. DELETE /movies/:id
 
 Description:
 
@@ -242,13 +396,13 @@ _Response (401 - Unauthorized)_
 
 ```json
 {
-  "message": "Invalid Token"
+  "message": "Invalid token"
 }
 ```
 
 &nbsp;
 
-## 5. GET /genres
+## 7. GET /genres
 
 Description:
 
@@ -282,13 +436,64 @@ _Response (401 - Unauthorized)_
 
 ```json
 {
-  "message": "Invalid Token"
+  "message": "Invalid token"
+}
+```
+
+## 8. GET /genres/:id
+
+Description:
+
+- Get genre by id
+
+Request:
+
+- headers:
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "id": 1,
+  "name": "Action",
+  "createdAt": "2023-02-23T12:16:35.418Z",
+  "updatedAt": "2023-02-23T12:16:35.418Z"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "Genre not found"
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid token"
 }
 ```
 
 &nbsp;
 
-## 6. POST /genres/add
+## 9. POST /genres/add
 
 Description:
 
@@ -335,13 +540,71 @@ _Response (401 - Unauthorized)_
 
 ```json
 {
-  "message": "Invalid Token"
+  "message": "Invalid token"
 }
 ```
 
 &nbsp;
 
-## 7. DELETE /genres/:id
+## 10. PUT /genres/:id
+
+Description:
+
+- Edit genre by id
+
+Request:
+
+- headers:
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+- body:
+
+```json
+{
+  "name": "string"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "message": "Horror success to edit"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "Genre not found"
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid token"
+}
+```
+
+&nbsp;
+
+## 11. DELETE /genres/:id
 
 Description:
 
@@ -385,7 +648,7 @@ _Response (401 - Unauthorized)_
 
 ```json
 {
-  "message": "Invalid Token"
+  "message": "Invalid token"
 }
 ```
 
@@ -393,13 +656,13 @@ _Response (403 - Forbidden)_
 
 ```json
 {
-  "message": "Forbidden"
+  "message": "Not Authorized"
 }
 ```
 
 &nbsp;
 
-## 8. POST /register
+## 12. POST /register
 
 Request:
 
@@ -445,7 +708,7 @@ OR
 
 &nbsp;
 
-## 9. POST /login
+## 13. POST /login
 
 Request:
 
@@ -488,12 +751,34 @@ _Response (401 - Unauthorized)_
 
 &nbsp;
 
+## 14. POST /google-sign-in
+
+Request:
+
+- headers:
+
+```json
+{
+  "token_google": "string"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+&nbsp;
+
 ## Global Error
 
 _Response (500 - Internal Server Error)_
 
 ```json
 {
-  "message": "Internal Server Error"
+  "message": "Internal server error"
 }
 ```
