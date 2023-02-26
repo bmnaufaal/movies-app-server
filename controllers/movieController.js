@@ -119,7 +119,6 @@ class MovieController {
           rating: rating,
           genreId: genreId,
           authorId: authorId,
-          status: status,
         },
         {
           where: {

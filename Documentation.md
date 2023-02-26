@@ -114,8 +114,7 @@ Request:
   "trailerUrl": "string",
   "imgUrl": "string",
   "rating": "integer",
-  "genreId": "integer",
-  "authorId": "integer"
+  "genreId": "integer"
 }
 ```
 
@@ -264,7 +263,6 @@ Request:
   "trailerUrl": "string",
   "imgUrl": "string",
   "rating": "integer",
-  "status": "string",
   "genreId": "integer"
 }
 ```
