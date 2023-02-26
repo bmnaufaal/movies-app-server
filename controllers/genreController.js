@@ -13,6 +13,19 @@ class GenreController {
     }
   }
 
+  static async findOne(req, res, next) {
+    const { id } = req.params;
+    try {
+      let foundGenre = await Genre.findByPk(id);
+      if (!foundGenre) {
+        throw { name: "GenreNotFound" };
+      }
+      res.status(200).json(foundGenre);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async create(req, res, next) {
     try {
       const { name } = req.body;
@@ -57,7 +70,7 @@ class GenreController {
       if (!foundGenre) {
         throw { name: "GenreNotFound" };
       }
-      let updatedGenre = await Movie.update(
+      let updatedGenre = await Genre.update(
         { name },
         {
           where: {

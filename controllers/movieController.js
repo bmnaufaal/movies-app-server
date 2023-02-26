@@ -102,8 +102,7 @@ class MovieController {
       imgUrl,
       rating,
       genreId,
-      authorId: 
-      status,
+      authorId: status,
     } = req.body;
     try {
       let foundMovie = await Movie.findByPk(id);

@@ -16,6 +16,7 @@ List of available endpoints:
 ## Genres :
 
 - `GET /genres`
+- `GET /genres/:id`
 - `POST /genres/add`
 - `PUT /genres/:id`
 - `DELETE /genres/:id`
@@ -401,7 +402,7 @@ _Response (401 - Unauthorized)_
 
 &nbsp;
 
-## 5. GET /genres
+## 7. GET /genres
 
 Description:
 
@@ -429,6 +430,57 @@ _Response (200 - OK)_
     }
     ...,
 ]
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid token"
+}
+```
+
+## 8. GET /genres/:id
+
+Description:
+
+- Get genre by id
+
+Request:
+
+- headers:
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "id": 1,
+  "name": "Action",
+  "createdAt": "2023-02-23T12:16:35.418Z",
+  "updatedAt": "2023-02-23T12:16:35.418Z"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "Genre not found"
+}
 ```
 
 _Response (401 - Unauthorized)_
