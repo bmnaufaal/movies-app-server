@@ -1,9 +1,10 @@
 "use strict";
 const { hashPassword, comparePassword } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
-const { User } = require("../models");
+const { User, Movie, Genre } = require("../models");
 const { OAuth2Client } = require("google-auth-library");
 const { generatePassword } = require("../helpers/format");
+const { Op } = require("sequelize");
 
 class CustomerController {
   static async register(req, res, next) {
@@ -90,6 +91,59 @@ class CustomerController {
       res.status(200).json({
         access_token: access_token,
       });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async findAll(req, res, next) {
+    try {
+      const { filter, page } = req.query;
+      let limit;
+      let offset;
+      const paramQuerySQL = {
+        order: [["id", "ASC"]],
+        include: [
+          {
+            model: Genre,
+            attributes: ["id", "name"],
+          },
+          {
+            model: User,
+            as: "Author",
+            attributes: ["id", "username", "email", "role"],
+          },
+        ],
+      };
+
+      if (filter) {
+        const query = filter.genre.split(",").map((item) => ({
+          [Op.eq]: item,
+        }));
+
+        paramQuerySQL.where = {
+          genreId: { [Op.or]: query },
+        };
+      }
+
+      if (page) {
+        if (page.number) {
+          limit = page.size;
+          paramQuerySQL.limit = limit;
+        }
+        if (page.size) {
+          offset = page.number * limit - limit;
+          paramQuerySQL.offset = offset;
+        }
+      } else {
+        limit = 3; // limit 3 item
+        offset = 0;
+        paramQuerySQL.limit = limit;
+        paramQuerySQL.offset = offset;
+      }
+
+      const movies = await Movie.findAll(paramQuerySQL);
+      res.status(200).json(movies);
     } catch (error) {
       next(error);
     }
