@@ -5,8 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "jest",
-    "reset-db": "sequelize db:drop --env test && sequelize db:create --env test && sequelize db:migrate --env test"
+    "test": "jest --detectOpenHandles --forceExit",
+    "reset-db": "sequelize db:drop && sequelize db:create && sequelize db:migrate",
+    "reset-db-test": "sequelize db:drop --env test && sequelize db:create --env test && sequelize db:migrate --env test",
+    "reset-db-seed": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
+    "reset-db-seed-test": "sequelize db:drop --env test && sequelize db:create --env test && sequelize db:migrate --env test && sequelize db:seed:all --env test"
   },
   "repository": {
     "type": "git",
