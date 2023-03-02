@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 });
 
 router.use("/", userRouter);
-router.use("/customer", customerRouter);
+router.use("/customers", customerRouter);
 router.use("/movies", movieRouter);
 router.use("/genres", genreRouter);
 router.use("/histories", historyRouter);

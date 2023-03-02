@@ -36,16 +36,16 @@ afterAll(async () => {
   }
 });
 
-describe("POST /customer/login", () => {
+describe("POST /customers/login", () => {
   describe("Success Case: ", () => {
-    it("Success login", async () => {
+    it("Login", async () => {
       const bodyData = {
         email: "minatoaqua@gmail.com",
         password: "123456",
       };
 
       const response = await request(app)
-        .post("/customer/login")
+        .post("/customers/login")
         .send(bodyData);
       expect(response.status).toBe(200);
       expect(response.body).toBeInstanceOf(Object);
@@ -61,7 +61,7 @@ describe("POST /customer/login", () => {
       };
 
       const response = await request(app)
-        .post("/customer/login")
+        .post("/customers/login")
         .send(bodyData);
       expect(response.status).toBe(401);
       expect(response.body).toBeInstanceOf(Object);
@@ -75,7 +75,7 @@ describe("POST /customer/login", () => {
       };
 
       const response = await request(app)
-        .post("/customer/login")
+        .post("/customers/login")
         .send(bodyData);
       expect(response.status).toBe(401);
       expect(response.body).toBeInstanceOf(Object);

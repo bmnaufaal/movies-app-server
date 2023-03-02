@@ -135,14 +135,14 @@ afterAll(async () => {
   });
 });
 
-describe("GET /customer/movies", () => {
+describe("GET /customers/movies", () => {
   describe("Success Case: ", () => {
-    it("Success get movies with no parameters", async () => {
+    it("Get movies with no parameters", async () => {
       const headers = {
         access_token: access_token,
       };
 
-      const response = await request(app).get("/customer/movies").set(headers);
+      const response = await request(app).get("/customers/movies").set(headers);
       expect(response.status).toBe(200);
       expectMoviesData(response);
     });
@@ -156,14 +156,14 @@ describe("GET /customer/movies", () => {
       "filter[genre]": 3,
     };
     const response = await request(app)
-      .get("/customer/movies")
+      .get("/customers/movies")
       .query(query)
       .set(headers);
     expect(response.status).toBe(200);
     expectMoviesData(response);
   });
 
-  it("Success get movies with pagination parameters", async () => {
+  it("Get movies with pagination parameters", async () => {
     const headers = {
       access_token: access_token,
     };
@@ -172,33 +172,33 @@ describe("GET /customer/movies", () => {
       "page[number]": 1,
     };
     const response = await request(app)
-      .get("/customer/movies")
+      .get("/customers/movies")
       .query(query)
       .set(headers);
     expect(response.status).toBe(200);
     expectMoviesData(response);
   });
 
-  it("Success get movie detail with params id", async () => {
+  it("Get movie detail with params id", async () => {
     const headers = {
       access_token: access_token,
     };
     const params = 1;
     const response = await request(app)
-      .get("/customer/movies/" + params)
+      .get("/customers/movies/" + params)
       .set(headers);
     expect(response.status).toBe(200);
     expectMovieDetail(response);
   });
 
   describe("Failed Case: ", () => {
-    it("Failed get movie detail with invalid params id", async () => {
+    it("Get movie detail with invalid params id", async () => {
       const headers = {
         access_token: access_token,
       };
       const params = 999;
       const response = await request(app)
-        .get("/customer/movies/" + params)
+        .get("/customers/movies/" + params)
         .set(headers);
       expect(response.status).toBe(404);
       expect(response.body).toHaveProperty("message", "Movie not found");

@@ -1,3 +1,4 @@
+const BookmarkController = require("../controllers/bookmarkController");
 const CostumerController = require("../controllers/customerController");
 const customerAuthentication = require("../middlewares/customerAuthentication");
 
@@ -15,6 +16,17 @@ customerRouter.get(
   "/movies/:id",
   customerAuthentication,
   CostumerController.findOne
+);
+customerRouter.get(
+  "/bookmarks",
+  customerAuthentication,
+  BookmarkController.findAll
+);
+
+customerRouter.post(
+  "/bookmarks/add",
+  customerAuthentication,
+  BookmarkController.create
 );
 
 module.exports = customerRouter;

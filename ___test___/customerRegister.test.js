@@ -20,9 +20,9 @@ afterAll(async () => {
   }
 });
 
-describe("POST /customer/register", () => {
+describe("POST /customers/register", () => {
   describe("Success Case: ", () => {
-    it("Success Register", async () => {
+    it("Register", async () => {
       const bodyData = {
         // fullName: "Minato Aqua",
         email: "minatoaqua@gmail.com",
@@ -32,7 +32,7 @@ describe("POST /customer/register", () => {
       };
 
       const response = await request(app)
-        .post("/customer/register")
+        .post("/customers/register")
         .send(bodyData);
       expect(response.status).toBe(201);
       expect(response.body).toBeInstanceOf(Object);
@@ -52,7 +52,7 @@ describe("POST /customer/register", () => {
       };
 
       const response = await request(app)
-        .post("/customer/register")
+        .post("/customers/register")
         .send(bodyData);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
@@ -71,7 +71,7 @@ describe("POST /customer/register", () => {
       };
 
       const response = await request(app)
-        .post("/customer/register")
+        .post("/customers/register")
         .send(bodyData);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
@@ -90,7 +90,7 @@ describe("POST /customer/register", () => {
       };
 
       const response = await request(app)
-        .post("/customer/register")
+        .post("/customers/register")
         .send(bodyData);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
@@ -110,7 +110,7 @@ describe("POST /customer/register", () => {
       };
 
       const response = await request(app)
-        .post("/customer/register")
+        .post("/customers/register")
         .send(bodyData);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
@@ -130,7 +130,7 @@ describe("POST /customer/register", () => {
       };
 
       const response = await request(app)
-        .post("/customer/register")
+        .post("/customers/register")
         .send(bodyData);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);

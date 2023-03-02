@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "authorId",
         as: "Author",
       });
+      Movie.hasMany(models.Bookmark);
     }
   }
   Movie.init(

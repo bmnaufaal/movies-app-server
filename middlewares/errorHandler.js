@@ -36,6 +36,10 @@ function errorHandler(error, req, res, next) {
       status = 401;
       message = "Invalid email/password";
       break;
+    case "CustomerNotFound":
+      status = 404;
+      message = "Customer not found";
+      break;
     case "MovieNotFound":
       status = 404;
       message = "Movie not found";
