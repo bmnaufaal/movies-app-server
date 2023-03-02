@@ -26,7 +26,7 @@ describe("POST /customers/register", () => {
       const bodyData = {
         // fullName: "Minato Aqua",
         email: "minatoaqua@gmail.com",
-        password: hashPassword("123456"),
+        password: "123456",
         phoneNumber: "123456",
         address: "Japan",
       };
@@ -45,8 +45,7 @@ describe("POST /customers/register", () => {
     it("Null Email", async () => {
       const bodyData = {
         fullName: "Minato Aqua",
-        email: null,
-        password: hashPassword("123456"),
+        password: "123456",
         phoneNumber: "123456",
         address: "Japan",
       };
@@ -56,8 +55,8 @@ describe("POST /customers/register", () => {
         .send(bodyData);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
-      expect(response.body).toHaveProperty("message", [
-        "Email should not be null",
+      expect(response.body).toHaveProperty("message[0]", [
+        "Email is required",
       ]);
     });
 
@@ -65,7 +64,6 @@ describe("POST /customers/register", () => {
       const bodyData = {
         fullName: "Minato Aqua",
         email: "minatoaqua@gmail.com",
-        password: null,
         phoneNumber: "123456",
         address: "Japan",
       };
@@ -75,8 +73,8 @@ describe("POST /customers/register", () => {
         .send(bodyData);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
-      expect(response.body).toHaveProperty("message", [
-        "Password should not be null",
+      expect(response.body).toHaveProperty("message[0]", [
+        "Password is required",
       ]);
     });
 
@@ -132,10 +130,12 @@ describe("POST /customers/register", () => {
       const response = await request(app)
         .post("/customers/register")
         .send(bodyData);
+      console.log("body message");
+      console.log(response.body);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
-      expect(response.body).toHaveProperty("message", [
-        "Password should not be empty",
+      expect(response.body).toHaveProperty("message[0]", [
+        "Password is required",
       ]);
     });
   });

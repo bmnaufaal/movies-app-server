@@ -14,10 +14,14 @@ class CustomerController {
         let fullNamePlaceholder = email.split("@");
         fullNamePlaceholder = fullNamePlaceholder[0];
       }
+
+      if (!email) throw { name: "InvalidEmail" };
+      if (!password) throw { name: "InvalidPassword" };
+
       const createdUser = await Customer.create({
         fullName: fullName,
         email: email,
-        password: password,
+        password: hashPassword(password),
         phoneNumber: phoneNumber,
         address: address,
       });
@@ -68,7 +72,7 @@ class CustomerController {
       const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
       const ticket = await client.verifyIdToken({
         idToken: token_google,
-        audience: process.env.GOOGLE_CLIENT_ID, 
+        audience: process.env.GOOGLE_CLIENT_ID,
         // Specify the CLIENT_ID of the app that accesses the backend
         // Or, if multiple clients access the backend:
         //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
@@ -118,6 +122,9 @@ class CustomerController {
             attributes: ["id", "username", "email", "role"],
           },
         ],
+        where: {
+          status: { [Op.eq]: "Active" },
+        },
       };
 
       if (filter) {
@@ -126,6 +133,7 @@ class CustomerController {
         }));
 
         paramQuerySQL.where = {
+          status: { [Op.eq]: "Active" },
           genreId: { [Op.or]: query },
         };
       }
@@ -134,16 +142,21 @@ class CustomerController {
         if (page.number) {
           limit = page.size;
           paramQuerySQL.limit = limit;
+        } else {
+          limit = 5; // limit 5 item
+          offset = 0;
+          paramQuerySQL.limit = limit;
+          paramQuerySQL.offset = offset;
         }
         if (page.size) {
           offset = page.number * limit - limit;
           paramQuerySQL.offset = offset;
+        } else {
+          limit = 5; // limit 5 item
+          offset = 0;
+          paramQuerySQL.limit = limit;
+          paramQuerySQL.offset = offset;
         }
-      } else {
-        limit = 3; // limit 3 item
-        offset = 0;
-        paramQuerySQL.limit = limit;
-        paramQuerySQL.offset = offset;
       }
 
       const movies = await Movie.findAll(paramQuerySQL);
