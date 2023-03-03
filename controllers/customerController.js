@@ -9,21 +9,15 @@ const { Op } = require("sequelize");
 class CustomerController {
   static async register(req, res, next) {
     try {
-      let { fullName, email, password, phoneNumber, address } = req.body;
-      if (!fullName) {
-        let fullNamePlaceholder = email.split("@");
-        fullNamePlaceholder = fullNamePlaceholder[0];
-      }
+      let { email, password } = req.body;
 
       if (!email) throw { name: "InvalidEmail" };
       if (!password) throw { name: "InvalidPassword" };
 
       const createdUser = await Customer.create({
-        fullName: fullName,
         email: email,
         password: hashPassword(password),
-        phoneNumber: phoneNumber,
-        address: address,
+        role: "Customer",
       });
       res.status(201).json({
         id: createdUser.id,
@@ -84,9 +78,9 @@ class CustomerController {
           email: payload.email,
         },
         defaults: {
-          fullName: payload.name,
           email: payload.email,
           password: generatePassword(),
+          role: "Customer",
         },
         hooks: false,
       });

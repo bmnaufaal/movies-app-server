@@ -8,9 +8,9 @@ beforeAll(async () => {
   try {
     await sequelize.queryInterface.bulkInsert("Customers", [
       {
-        fullName: "Minato Aqua",
         email: "minatoaqua@gmail.com",
         password: hashPassword("123456"),
+        role: "Customer",
         createdAt: new Date(),
         updatedAt: new Date(),
       },

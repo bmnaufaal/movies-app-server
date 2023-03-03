@@ -24,16 +24,14 @@ describe("POST /customers/register", () => {
   describe("Success Case: ", () => {
     it("Register", async () => {
       const bodyData = {
-        // fullName: "Minato Aqua",
         email: "minatoaqua@gmail.com",
         password: "123456",
-        phoneNumber: "123456",
-        address: "Japan",
       };
 
       const response = await request(app)
         .post("/customers/register")
         .send(bodyData);
+
       expect(response.status).toBe(201);
       expect(response.body).toBeInstanceOf(Object);
       expect(response.body).toHaveProperty("id", expect.any(Number));
@@ -44,10 +42,7 @@ describe("POST /customers/register", () => {
   describe("Failed Case: ", () => {
     it("Null Email", async () => {
       const bodyData = {
-        fullName: "Minato Aqua",
         password: "123456",
-        phoneNumber: "123456",
-        address: "Japan",
       };
 
       const response = await request(app)
@@ -55,17 +50,12 @@ describe("POST /customers/register", () => {
         .send(bodyData);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
-      expect(response.body).toHaveProperty("message[0]", [
-        "Email is required",
-      ]);
+      expect(response.body).toHaveProperty("message[0]", ["Email is required"]);
     });
 
     it("Null Password", async () => {
       const bodyData = {
-        fullName: "Minato Aqua",
         email: "minatoaqua@gmail.com",
-        phoneNumber: "123456",
-        address: "Japan",
       };
 
       const response = await request(app)
@@ -80,11 +70,8 @@ describe("POST /customers/register", () => {
 
     it("Wrong email format", async () => {
       const bodyData = {
-        fullName: "Minato Aqua",
         email: "minatoaqua",
         password: "123456",
-        phoneNumber: "123456",
-        address: "Japan",
       };
 
       const response = await request(app)
@@ -100,11 +87,8 @@ describe("POST /customers/register", () => {
 
     it("Empty Email", async () => {
       const bodyData = {
-        fullName: "Minato Aqua",
         email: "",
         password: "123456",
-        phoneNumber: "123456",
-        address: "Japan",
       };
 
       const response = await request(app)
@@ -120,18 +104,13 @@ describe("POST /customers/register", () => {
 
     it("Empty Password", async () => {
       const bodyData = {
-        fullName: "Minato Aqua",
-        email: "dummyacc@gmail.com",
+        email: "minatoaqua@gmail.com",
         password: "",
-        phoneNumber: "123456",
-        address: "Japan",
       };
 
       const response = await request(app)
         .post("/customers/register")
         .send(bodyData);
-      console.log("body message");
-      console.log(response.body);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
       expect(response.body).toHaveProperty("message[0]", [

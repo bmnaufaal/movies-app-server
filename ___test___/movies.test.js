@@ -138,68 +138,50 @@ afterAll(async () => {
 describe("GET /customers/movies", () => {
   describe("Success Case: ", () => {
     it("Get movies with no parameters", async () => {
-      const headers = {
-        access_token: access_token,
-      };
 
-      const response = await request(app).get("/customers/movies").set(headers);
+      const response = await request(app).get("/customers/movies")
       expect(response.status).toBe(200);
       expectMoviesData(response);
     });
   });
 
   it("Success get movies with filter parameters", async () => {
-    const headers = {
-      access_token: access_token,
-    };
     const query = {
       "filter[genre]": 3,
     };
     const response = await request(app)
       .get("/customers/movies")
       .query(query)
-      .set(headers);
     expect(response.status).toBe(200);
     expectMoviesData(response);
   });
 
   it("Get movies with pagination parameters", async () => {
-    const headers = {
-      access_token: access_token,
-    };
     const query = {
       "page[size]": 10,
       "page[number]": 1,
     };
+
     const response = await request(app)
       .get("/customers/movies")
       .query(query)
-      .set(headers);
     expect(response.status).toBe(200);
     expectMoviesData(response);
   });
 
   it("Get movie detail with params id", async () => {
-    const headers = {
-      access_token: access_token,
-    };
     const params = 1;
     const response = await request(app)
       .get("/customers/movies/" + params)
-      .set(headers);
     expect(response.status).toBe(200);
     expectMovieDetail(response);
   });
 
   describe("Failed Case: ", () => {
     it("Get movie detail with invalid params id", async () => {
-      const headers = {
-        access_token: access_token,
-      };
       const params = 999;
       const response = await request(app)
         .get("/customers/movies/" + params)
-        .set(headers);
       expect(response.status).toBe(404);
       expect(response.body).toHaveProperty("message", "Movie not found");
     });

@@ -7,16 +7,9 @@ const customerRouter = require("express").Router();
 customerRouter.post("/register", CostumerController.register);
 customerRouter.post("/login", CostumerController.login);
 customerRouter.post("/google-sign-in", CostumerController.googleSignIn);
-customerRouter.get(
-  "/movies",
-  customerAuthentication,
-  CostumerController.findAll
-);
-customerRouter.get(
-  "/movies/:id",
-  customerAuthentication,
-  CostumerController.findOne
-);
+customerRouter.get("/movies", CostumerController.findAll);
+customerRouter.get("/movies/:id", CostumerController.findOne);
+
 customerRouter.get(
   "/bookmarks",
   customerAuthentication,

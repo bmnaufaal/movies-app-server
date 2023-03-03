@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Customer.init(
     {
-      fullName: DataTypes.STRING,
       email: {
         allowNull: false,
         type: DataTypes.STRING,
@@ -46,8 +45,18 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      phoneNumber: DataTypes.STRING,
-      address: DataTypes.STRING,
+      role: {
+        allowNull: false,
+        type: DataTypes.STRING,
+        validate: {
+          notNull: {
+            msg: "Role should not be null",
+          },
+          notEmpty: {
+            msg: "Role should not be empty",
+          },
+        },
+      },
     },
     {
       sequelize,
