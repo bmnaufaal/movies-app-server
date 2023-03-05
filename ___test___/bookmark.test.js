@@ -160,7 +160,6 @@ describe("POST /customers/bookmarks/add", () => {
       };
 
       const bodyData = {
-        CustomerId: 1,
         MovieId: 1,
       };
 

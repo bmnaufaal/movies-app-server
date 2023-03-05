@@ -5,6 +5,7 @@ const { Customer, User, Movie, Genre } = require("../models");
 const { OAuth2Client } = require("google-auth-library");
 const { generatePassword } = require("../helpers/format");
 const { Op } = require("sequelize");
+const movie = require("../models/movie");
 
 class CustomerController {
   static async register(req, res, next) {
@@ -100,7 +101,7 @@ class CustomerController {
 
   static async findAll(req, res, next) {
     try {
-      const { filter, page } = req.query;
+      const { filter, page, size } = req.query;
       let limit;
       let offset;
       const paramQuerySQL = {
@@ -122,7 +123,7 @@ class CustomerController {
       };
 
       if (filter) {
-        const query = filter.genre.split(",").map((item) => ({
+        const query = filter.split(",").map((item) => ({
           [Op.eq]: item,
         }));
 
@@ -132,29 +133,41 @@ class CustomerController {
         };
       }
 
-      if (page) {
-        if (page.number) {
-          limit = page.size;
-          paramQuerySQL.limit = limit;
-        } else {
-          limit = 5; // limit 5 item
-          offset = 0;
-          paramQuerySQL.limit = limit;
-          paramQuerySQL.offset = offset;
-        }
-        if (page.size) {
-          offset = page.number * limit - limit;
-          paramQuerySQL.offset = offset;
-        } else {
-          limit = 5; // limit 5 item
-          offset = 0;
-          paramQuerySQL.limit = limit;
-          paramQuerySQL.offset = offset;
-        }
+      if (page && size) {
+        limit = size;
+        offset = page * limit - limit;
+        paramQuerySQL.limit = limit;
+        paramQuerySQL.offset = offset;
       }
 
       const movies = await Movie.findAll(paramQuerySQL);
       res.status(200).json(movies);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async findMaxLength(req, res, next) {
+    try {
+      const { filter } = req.query;
+      const paramQuerySQL = {};
+      
+      if (filter) {
+        const query = filter.split(",").map((item) => ({
+          [Op.eq]: item,
+        }));
+
+        paramQuerySQL.where = {
+          status: { [Op.eq]: "Active" },
+          genreId: { [Op.or]: query },
+        };
+      }
+
+      const movies = await Movie.findAll(paramQuerySQL);
+      const moviesLength = movies.length;
+      res.status(200).json({
+        message: moviesLength,
+      });
     } catch (error) {
       next(error);
     }

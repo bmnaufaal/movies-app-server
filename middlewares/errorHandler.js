@@ -3,6 +3,10 @@ function errorHandler(error, req, res, next) {
   let message = "";
 
   switch (error.name) {
+    case "AlreadyBookmarked":
+      status = 400;
+      message = "Already bookmarked";
+      break;
     case "JsonWebTokenError":
     case "InvalidAccessToken":
       status = 401;
@@ -35,6 +39,10 @@ function errorHandler(error, req, res, next) {
     case "InvalidCredentials":
       status = 401;
       message = "Invalid email/password";
+      break;
+    case "BookmarkNotFound":
+      status = 404;
+      message = "Bookmark not found";
       break;
     case "CustomerNotFound":
       status = 404;
