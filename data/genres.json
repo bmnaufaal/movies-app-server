@@ -13,5 +13,50 @@
   },
   {
     "name": "Romance"
+  },
+  {
+    "name": "Horror"
+  },
+  {
+    "name": "Slasher"
+  },
+  {
+    "name": "Mystery"
+  },
+  {
+    "name": "Mockumentary"
+  },
+  {
+    "name": "Documentary"
+  },
+  {
+    "name": "Comedy"
+  },
+  {
+    "name": "Western"
+  },
+  {
+    "name": "Crime"
+  },
+  {
+    "name": "Sci-Fi"
+  },
+  {
+    "name": "Musical"
+  },
+  {
+    "name": "Adventure"
+  },
+  {
+    "name": "Fantasy"
+  },
+  {
+    "name": "War"
+  },
+  {
+    "name": "Found-footage"
+  },
+  {
+    "name": "Gore"
   }
 ]
