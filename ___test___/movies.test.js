@@ -136,6 +136,8 @@ afterAll(async () => {
 });
 
 describe("GET /customers/movies", () => {
+
+  // 11
   describe("Success Case: ", () => {
     it("Get movies with no parameters", async () => {
 
@@ -145,9 +147,10 @@ describe("GET /customers/movies", () => {
     });
   });
 
+  // 12
   it("Success get movies with filter parameters", async () => {
     const query = {
-      "filter[genre]": 3,
+      "filter": 3,
     };
     const response = await request(app)
       .get("/customers/movies")
@@ -156,10 +159,11 @@ describe("GET /customers/movies", () => {
     expectMoviesData(response);
   });
 
+  // 13
   it("Get movies with pagination parameters", async () => {
     const query = {
-      "page[size]": 10,
-      "page[number]": 1,
+      "page": 1,
+      "size": 10,
     };
 
     const response = await request(app)
@@ -169,6 +173,7 @@ describe("GET /customers/movies", () => {
     expectMoviesData(response);
   });
 
+  // 14
   it("Get movie detail with params id", async () => {
     const params = 1;
     const response = await request(app)
@@ -178,6 +183,8 @@ describe("GET /customers/movies", () => {
   });
 
   describe("Failed Case: ", () => {
+
+    // 15
     it("Get movie detail with invalid params id", async () => {
       const params = 999;
       const response = await request(app)

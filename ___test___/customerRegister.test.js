@@ -4,6 +4,23 @@ const { User } = require("../models");
 const { hashPassword } = require("../helpers/bcrypt");
 const { sequelize } = require("../models");
 
+beforeAll(async () => {
+  // Seeding Customers
+  try {
+    await sequelize.queryInterface.bulkInsert("Customers", [
+      {
+        email: "minatoaqua2@gmail.com",
+        password: hashPassword("123456"),
+        role: "Customer",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 afterAll(async () => {
   // Remove Seeding Customer
   try {
@@ -21,6 +38,7 @@ afterAll(async () => {
 });
 
 describe("POST /customers/register", () => {
+  // 1
   describe("Success Case: ", () => {
     it("Register", async () => {
       const bodyData = {
@@ -40,6 +58,7 @@ describe("POST /customers/register", () => {
   });
 
   describe("Failed Case: ", () => {
+    // 2
     it("Null Email", async () => {
       const bodyData = {
         password: "123456",
@@ -50,9 +69,13 @@ describe("POST /customers/register", () => {
         .send(bodyData);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
-      expect(response.body).toHaveProperty("message[0]", ["Email is required"]);
+      expect(response.body).toHaveProperty(
+        "message[0]",
+        "Email should not be null"
+      );
     });
 
+    // 3
     it("Null Password", async () => {
       const bodyData = {
         email: "minatoaqua@gmail.com",
@@ -63,11 +86,13 @@ describe("POST /customers/register", () => {
         .send(bodyData);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
-      expect(response.body).toHaveProperty("message[0]", [
-        "Password is required",
-      ]);
+      expect(response.body).toHaveProperty(
+        "message[0]",
+        "Password should not be null"
+      );
     });
 
+    // 7
     it("Wrong email format", async () => {
       const bodyData = {
         email: "minatoaqua",
@@ -85,6 +110,7 @@ describe("POST /customers/register", () => {
       );
     });
 
+    // 4
     it("Empty Email", async () => {
       const bodyData = {
         email: "",
@@ -102,6 +128,7 @@ describe("POST /customers/register", () => {
       );
     });
 
+    // 5
     it("Empty Password", async () => {
       const bodyData = {
         email: "minatoaqua@gmail.com",
@@ -113,9 +140,28 @@ describe("POST /customers/register", () => {
         .send(bodyData);
       expect(response.status).toBe(400);
       expect(response.body).toBeInstanceOf(Object);
-      expect(response.body).toHaveProperty("message[0]", [
-        "Password is required",
-      ]);
+      expect(response.body).toHaveProperty(
+        "message[0]",
+        "Password should not be empty"
+      );
+    });
+
+    // 6
+    it("Email already exist", async () => {
+      const bodyData = {
+        email: "minatoaqua2@gmail.com",
+        password: "123",
+      };
+
+      const response = await request(app)
+        .post("/customers/register")
+        .send(bodyData);
+      expect(response.status).toBe(400);
+      expect(response.body).toBeInstanceOf(Object);
+      expect(response.body).toHaveProperty(
+        "message[0]",
+        "This email is already taken"
+      );
     });
   });
 });

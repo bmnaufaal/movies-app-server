@@ -12,12 +12,9 @@ class CustomerController {
     try {
       let { email, password } = req.body;
 
-      if (!email) throw { name: "InvalidEmail" };
-      if (!password) throw { name: "InvalidPassword" };
-
       const createdUser = await Customer.create({
         email: email,
-        password: hashPassword(password),
+        password: password,
         role: "Customer",
       });
       res.status(201).json({
@@ -151,7 +148,7 @@ class CustomerController {
     try {
       const { filter } = req.query;
       const paramQuerySQL = {};
-      
+
       if (filter) {
         const query = filter.split(",").map((item) => ({
           [Op.eq]: item,

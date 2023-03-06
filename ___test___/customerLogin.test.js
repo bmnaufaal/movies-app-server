@@ -37,6 +37,8 @@ afterAll(async () => {
 });
 
 describe("POST /customers/login", () => {
+
+  // 8
   describe("Success Case: ", () => {
     it("Login", async () => {
       const bodyData = {
@@ -54,6 +56,8 @@ describe("POST /customers/login", () => {
   });
 
   describe("Failed Case: ", () => {
+
+    // 9
     it("Wrong password", async () => {
       const bodyData = {
         email: "minatoaqua@gmail.com",
@@ -68,6 +72,7 @@ describe("POST /customers/login", () => {
       expect(response.body).toHaveProperty("message", "Invalid email/password");
     });
 
+    // 10
     it("Wrong email", async () => {
       const bodyData = {
         email: "null@gmail.com",

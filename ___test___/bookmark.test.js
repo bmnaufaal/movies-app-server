@@ -113,6 +113,8 @@ afterAll(async () => {
 });
 
 describe("GET /customers/bookmarks", () => {
+
+  // 16
   describe("Success case: ", () => {
     it("Get Bookmarks", async () => {
       const headers = {
@@ -131,6 +133,8 @@ describe("GET /customers/bookmarks", () => {
   });
 
   describe("Failed case: ", () => {
+
+    // 19
     it("Get Bookmarks with no access_token", async () => {
       const response = await request(app).get("/customers/bookmarks");
       expect(response.status).toBe(401);
@@ -138,6 +142,7 @@ describe("GET /customers/bookmarks", () => {
       expect(response.body).toHaveProperty("message", "Invalid token");
     });
 
+    // 20
     it("Get Bookmarks with wrong access_token", async () => {
       const headers = {
         access_token: "WRONG_TOKEN",
@@ -153,6 +158,8 @@ describe("GET /customers/bookmarks", () => {
 });
 
 describe("POST /customers/bookmarks/add", () => {
+
+  // 17
   describe("Success case: ", () => {
     it("Success Post Bookmarks", async () => {
       const headers = {
@@ -175,6 +182,8 @@ describe("POST /customers/bookmarks/add", () => {
   });
 
   describe("Failed case: ", () => {
+
+    // 18
     it("Post Bookmarks with wrong id", async () => {
         const headers = {
           access_token: access_token,
@@ -190,7 +199,7 @@ describe("POST /customers/bookmarks/add", () => {
           .set(headers)
           .send(bodyData);
         expect(response.status).toBe(404);
-        expect(response.body).toHaveProperty("message", "Customer not found");
+        expect(response.body).toHaveProperty("message", "Movie not found");
       });
   });
 });
